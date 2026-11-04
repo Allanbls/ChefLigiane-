@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Chef Ligia do Vale</title>
-<meta name="versao-site" content="15">
+<meta name="versao-site" content="16">
 <meta name="description" content="Chef confeiteira, professora e embaixadora Cobertop. Aulas, demonstrações e eventos de confeitaria por todo o Brasil e a União Chefs Empreendedores.">
 <meta name="theme-color" content="#FFB81C">
 <meta property="og:title" content="Chef Ligia do Vale">
@@ -16,7 +16,7 @@
 
 <link rel="preload" href="fonts/gloock-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/figtree-var.woff2" as="font" type="font/woff2" crossorigin>
-<script src="assets/boot.js"></script>
+<script src="assets/boot.js?v=16"></script>
 <style>
 @font-face{font-family:"Gloock";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/gloock-400.woff2) format("woff2")}
 @font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(fonts/figtree-var.woff2) format("woff2")}
@@ -658,15 +658,15 @@ section{position:relative;scroll-margin-top:72px}
   --lh-display:1.04; --lh-title:1.15; --lh-body:1.65; --lh-ui:1.3;
   --gutter:max(var(--sp-4),env(safe-area-inset-left,0px));
   --gutter-r:max(var(--sp-4),env(safe-area-inset-right,0px));
-  --sec-y:var(--sp-8);       /* respiro vertical de cada seção */
-  --sec-head:var(--sp-6);    /* título da seção → conteúdo */
-  --block-gap:var(--sp-8);   /* entre grandes blocos dentro da seção */
+  --sec-y:var(--sp-7);       /* respiro vertical de cada seção */
+  --sec-head:var(--sp-5);    /* título da seção → conteúdo */
+  --block-gap:var(--sp-7);   /* entre grandes blocos dentro da seção */
   --col-gap:var(--sp-7);     /* entre colunas */
   --card-pad:var(--sp-5);    /* padding interno de cards */
   --stack:var(--sp-4);       /* entre parágrafos e itens de texto */
 }
-@media (min-width:600px){:root{--sec-y:var(--sp-9);--sec-head:var(--sp-7);--card-pad:var(--sp-6)}}
-@media (min-width:900px){:root{--gutter:max(var(--sp-5),env(safe-area-inset-left,0px));--gutter-r:max(var(--sp-5),env(safe-area-inset-right,0px));--col-gap:var(--sp-8);--block-gap:var(--sp-9)}}
+@media (min-width:600px){:root{--sec-y:var(--sp-8);--sec-head:var(--sp-6);--block-gap:var(--sp-8);--card-pad:var(--sp-6)}}
+@media (min-width:900px){:root{--gutter:max(var(--sp-5),env(safe-area-inset-left,0px));--gutter-r:max(var(--sp-5),env(safe-area-inset-right,0px));--sec-y:var(--sp-9);--sec-head:var(--sp-7);--col-gap:var(--sp-8);--block-gap:var(--sp-9)}}
 @media (min-width:1200px){:root{--sec-y:var(--sp-10);--block-gap:var(--sp-10)}}
 
 /* tipografia */
@@ -811,6 +811,26 @@ h3{line-height:var(--lh-title)}
 .ck{left:var(--sp-3);right:var(--sp-3);gap:var(--sp-3) var(--sp-4);padding:var(--sp-4)}
 .ck-tx b{margin-bottom:var(--sp-1)}
 @media (min-width:700px){.ck{left:var(--sp-5);right:auto;bottom:var(--sp-5)}}
+
+/* =====================================================================
+   v16: funciona mesmo sem JavaScript + ajustes de respiro no celular
+   ===================================================================== */
+/* frases rotativas: sem JS (ou com movimento reduzido) aparece só a primeira */
+.rot-item:not(:first-child){visibility:hidden}
+/* leque: sem JS vira uma fileira de cards com rolagem nativa */
+.fan:not(.js-fan) .fan-stage{display:flex;gap:var(--sp-4);height:auto;margin:0 calc(var(--gutter) * -1);padding:var(--sp-2) var(--gutter) var(--sp-5);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);scrollbar-width:none;cursor:auto}
+.fan:not(.js-fan) .fan-stage::-webkit-scrollbar{display:none}
+.fan:not(.js-fan) .fan-card{position:relative;left:auto;top:auto;margin:0;flex:0 0 min(78%,300px);width:auto;height:auto;min-height:380px;transform:none;filter:none;opacity:1;z-index:auto;scroll-snap-align:start}
+.fan:not(.js-fan) .fan-btn,.fan:not(.js-fan) .fan-ctrl{display:none}
+/* agenda no celular: começa na margem (sem o vazio à esquerda) e sangra até a borda para mostrar que rola */
+@media (max-width:899px){#cards{margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);scroll-padding-inline:var(--gutter)}}
+#cards.is-carousel > *{scroll-snap-align:start}
+.agenda-sec.sec{padding-bottom:calc(var(--sec-y) * .5)}
+@media (max-width:599px){
+  .hero .wrap{padding-block:var(--sp-5) var(--sp-7)}
+  .cvh{padding-block:var(--sp-9) var(--sp-7)}
+  .join{margin-top:var(--sp-7)}
+}
 </style>
 
 </head>
@@ -1041,7 +1061,7 @@ h3{line-height:var(--lh-title)}
       </div>
       <a class="btn btn-solid" href="https://wa.me/5511982839250?text=Ol%C3%A1%2C%20quero%20saber%20da%20aula%20da%20Chef%20Ligia%20na%20minha%20cidade" target="_blank" rel="noopener noreferrer">Quero participar<svg class="ic"><use href="#i-arrow"/></svg></a>
     </div>
-    <div class="cards" id="cards"></div>
+    <div class="cards" id="cards" data-nopad></div>
     <div class="dots" id="cDots" style="color:var(--pitanga)" aria-label="Cidades"></div>
   </div>
 </section>
@@ -1090,7 +1110,13 @@ h3{line-height:var(--lh-title)}
 
     <div class="bcar reveal" id="bcar" role="group" aria-roledescription="carrossel" aria-label="Benefícios da União Chefs">
       <div class="bcar-top"><span class="script">por que entrar</span><h3>O que você ganha na União Chefs</h3></div>
-      <div class="bcar-track" id="bTrack" tabindex="0"></div>
+      <div class="bcar-track" id="bTrack" tabindex="0">
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="1 de 5"><span class="bn">01</span><div class="ttl">Capacitação</div><p class="big">Capacitamos chefs a se tornarem excelentes no que fazem.</p><p class="sm">Confeitaria, gastronomia e panificação: a associação prepara cada profissional para ampliar suas oportunidades.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="2 de 5"><span class="bn">02</span><div class="ttl">Oportunidade de ensino</div><p class="big">Oportunidades para você ensinar em grandes feiras e eventos de confeitaria e gastronomia em todo o país.</p><p class="sm">Trabalhamos em parceria com marcas do setor para viabilizar suas experiências.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="3 de 5"><span class="bn">03</span><div class="ttl">Comunidade</div><p class="big">Um espírito de amizade e colaboração entre os chefs.</p><p class="sm">Aqui, todos ensinam e todos aprendem uns com os outros, compartilhando experiências e dicas. Somos uma família, somos um time.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="4 de 5"><span class="bn">04</span><div class="ttl">Formação de professores</div><p class="big">Um curso específico para formar professores de confeitaria e gastronomia.</p><p class="sm">Para quem quer levar o próprio conhecimento para a sala de aula e para os palcos dos eventos.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="5 de 5"><span class="bn">05</span><div class="ttl">Apoio emocional e contábil</div><p class="big">Indicação de profissionais para suporte emocional, como psicoterapia.</p><p class="sm">Também indicamos profissionais para auxílio contábil e outras necessidades do dia a dia de quem empreende.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+      </div>
       <div class="bcar-ctrl">
         <button class="bbtn" type="button" id="bPrev" aria-label="Benefício anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
         <div class="dots" id="bDots" style="color:var(--pitanga)" aria-label="Benefícios"></div>
@@ -1180,7 +1206,7 @@ h3{line-height:var(--lh-title)}
     </div>
   </div>
   <div class="wrap foot-bottom">
-    <span>© 2026 Chef Ligia do Vale · v15</span>
+    <span>© 2026 Chef Ligia do Vale · v16</span>
     <span class="foot-legal"><a href="privacidade.html">Política de privacidade</a><button type="button" id="reopenCookies">Aviso de cookies</button></span>
     <span class="love">Feito com <svg aria-hidden="true"><use href="#i-heart"/></svg> e muito chocolate</span>
     <button class="totop" type="button" id="toTop">Voltar ao topo<span><svg aria-hidden="true"><use href="#i-up"/></svg></span></button>
@@ -1226,7 +1252,7 @@ h3{line-height:var(--lh-title)}
 
 <script src="vendor/gsap-3.12.5.min.js"></script>
 <script src="vendor/ScrollTrigger-3.12.5.min.js"></script>
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v=16"></script>
 
 </body>
 </html>

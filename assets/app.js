@@ -263,7 +263,7 @@ function makeCarousel(el,dotsEl,auto){
   if(auto&&!reduce)setInterval(()=>{if(visible&&!hover&&!dragging&&Date.now()-lastManual>6000&&el.classList.contains('is-carousel')&&!document.hidden)next(1,false);},auto);
   return {layout,update,next,el};
 }
-const carousels=[makeCarousel($('cards'),$('cDots'),0),makeCarousel($('popStrip'),$('pDots'),3200)];
+const carousels=[makeCarousel($('cards'),$('cDots'),3600),makeCarousel($('popStrip'),$('pDots'),3200)];
 carousels.forEach(c=>c.layout());
 /* agenda no celular: já abre com a "próxima parada" no centro */
 function focusNext(){const el=$('cards'),nx=el.querySelector('.is-next');if(!nx||!el.classList.contains('is-carousel'))return;
@@ -293,6 +293,19 @@ ben.forEach((b,i)=>{const t=document.createElement('button');t.className='tab';t
 showTab(0);
 let cur=0,auto=reduce?null:setInterval(()=>{cur=(cur+1)%ben.length;showTab(cur);},5000);
 function stopAuto(){if(auto){clearInterval(auto);auto=null;}}
+
+/* ---------- aviso de privacidade ---------- */
+(function(){
+  const box=$('ck');if(!box)return;
+  const KEY='ld_privacidade';
+  const visto=()=>{try{return localStorage.getItem(KEY);}catch(e){return null;}};
+  const grava=()=>{try{localStorage.setItem(KEY,JSON.stringify({v:1,t:Date.now()}));}catch(e){}};
+  function abre(){box.hidden=false;requestAnimationFrame(()=>requestAnimationFrame(()=>box.classList.add('on')));}
+  function fecha(){box.classList.remove('on');setTimeout(()=>{box.hidden=true;},550);}
+  $('ckOk').addEventListener('click',()=>{grava();fecha();});
+  const re=$('reopenCookies');if(re)re.addEventListener('click',abre);
+  if(!visto())setTimeout(abre,1400);
+})();
 
 /* ---------- copiar número ---------- */
 function copyText(txt,toastEl,okMsg){
@@ -396,7 +409,7 @@ $('toTop').addEventListener('click',()=>scrollTo({top:0,behavior:reduce?'auto':'
     try{
       if(enviados>=5)return;
       const chave=tipo+'|'+msg+'|'+src+'|'+lin;if(vistos.has(chave))return;vistos.add(chave);enviados++;
-      const corpo=JSON.stringify({t:tipo,m:String(msg).slice(0,300),s:String(src||'').replace(/[?#].*$/,'').slice(0,200),l:lin|0,p:location.pathname.slice(0,100),v:'13'});
+      const corpo=JSON.stringify({t:tipo,m:String(msg).slice(0,300),s:String(src||'').replace(/[?#].*$/,'').slice(0,200),l:lin|0,p:location.pathname.slice(0,100),v:'14'});
       if(navigator.sendBeacon)navigator.sendBeacon('/api/log',new Blob([corpo],{type:'text/plain'}));
     }catch(e){}
   }

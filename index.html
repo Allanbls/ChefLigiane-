@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Chef Ligia do Vale</title>
-<meta name="versao-site" content="13">
+<meta name="versao-site" content="14">
 <meta name="description" content="Chef confeiteira, professora e embaixadora Cobertop. Aulas, demonstrações e eventos de confeitaria por todo o Brasil e a União Chefs Empreendedores.">
 <meta name="theme-color" content="#FFB81C">
 <meta property="og:title" content="Chef Ligia do Vale">
@@ -591,6 +591,41 @@ section{position:relative;scroll-margin-top:72px}
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
 }
+
+/* ===== v14: seção de serviços texturizada + leque ajustado para celular ===== */
+#servicos{background:var(--canvas) url(assets/textura-granulado.svg) center top/240px 240px repeat}
+@media (max-width:699px){
+  .fan{--w:min(64vw,248px);--h:calc(var(--w) * 1.34);--dx:calc(var(--w) * .5);--dy:2px}
+  .fan-stage{margin-top:58px;height:calc(var(--h) * 1.06 + 58px)}
+  .fan-card{padding:18px 16px 16px;border-radius:26px;transform:translateX(calc(var(--d,0) * var(--dx) + var(--drag,0px))) rotate(calc(var(--d,0) * var(--rot))) translateY(calc(var(--ad,0) * var(--ad,0) * var(--dy))) scale(calc(1.06 - var(--ad,0) * .16))}
+  .fan-ico{width:44px;height:44px}
+  .fan-ico svg{width:22px;height:22px}
+  .fan-n{font-size:1.2rem}
+  .fan-card h3{font-size:1.5rem;margin-bottom:8px}
+  .fan-card p{font-size:.88rem;line-height:1.42}
+  .fan-go{margin-top:14px;padding:10px 15px;font-size:.86rem}
+  .fan-btn{width:42px;height:42px;top:calc(var(--h) * .3 + 58px)}
+  #fanPrev{left:4px}
+  #fanNext{right:4px}
+}
+
+/* ===== v14: aviso de privacidade ===== */
+.ck{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:65;display:grid;grid-template-columns:auto 1fr;gap:12px 14px;align-items:start;padding:16px;border-radius:22px;background:var(--cacau);color:#F8E9DA;box-shadow:0 24px 50px -16px rgba(0,0,0,.65);transform:translateY(130%);opacity:0;transition:transform .6s var(--ease),opacity .4s}
+.ck[hidden]{display:none}
+.ck.on{transform:none;opacity:1}
+.ck-ic{width:42px;height:42px;border-radius:50%;background:var(--sol);color:var(--cacau);display:grid;place-items:center}
+.ck-ic svg{width:22px;height:22px}
+.ck-tx b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.2rem;line-height:1.1;color:#fff;margin-bottom:5px}
+.ck-tx p{font-size:.86rem;line-height:1.5}
+.ck-tx strong{color:#fff}
+.ck-tx a{color:var(--sol);font-weight:700}
+.ck-btn{grid-column:1/-1;border:none;cursor:pointer;font:inherit;font-weight:800;padding:13px 20px;border-radius:999px;background:var(--sol);color:var(--cacau);transition:background .25s,transform .3s var(--ease)}
+.ck-btn:hover{background:#FFC94A;transform:translateY(-2px)}
+.ck-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media (min-width:700px){.ck{left:24px;right:auto;bottom:24px;max-width:470px}}
+.foot-legal{display:flex;flex-wrap:wrap;gap:6px 16px}
+.foot-legal a,.foot-legal button{color:#F2DFCB;background:none;border:0;padding:0;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.foot-legal a:hover,.foot-legal button:hover{color:var(--sol)}
 </style>
 
 </head>
@@ -600,6 +635,7 @@ section{position:relative;scroll-margin-top:72px}
     <symbol id="i-plane" viewBox="0 0 24 24"><path fill="currentColor" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></symbol>
     <symbol id="i-mega" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-7v16L3 13z"/><path d="M7 13v5a2 2 0 0 0 4 0v-3.5"/></g></symbol>
     <symbol id="i-cap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></g></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></g></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.3-9A5.2 5.2 0 0 1 12 6.6 5.2 5.2 0 0 1 21.3 12C19 16.6 12 21 12 21z" fill="currentColor"/></symbol>
     <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.6" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.8v2.6M12 19.6v2.6M1.8 12h2.6M19.6 12h2.6M4.8 4.8l1.8 1.8M17.4 17.4l1.8 1.8M4.8 19.2l1.8-1.8M17.4 6.6l1.8-1.8"/></g></symbol>
@@ -957,7 +993,8 @@ section{position:relative;scroll-margin-top:72px}
     </div>
   </div>
   <div class="wrap foot-bottom">
-    <span>© 2026 Chef Ligia do Vale · v13</span>
+    <span>© 2026 Chef Ligia do Vale · v14</span>
+    <span class="foot-legal"><a href="privacidade.html">Política de privacidade</a><button type="button" id="reopenCookies">Aviso de cookies</button></span>
     <span class="love">Feito com <svg aria-hidden="true"><use href="#i-heart"/></svg> e muito chocolate</span>
     <button class="totop" type="button" id="toTop">Voltar ao topo<span><svg aria-hidden="true"><use href="#i-up"/></svg></span></button>
   </div>
@@ -966,6 +1003,12 @@ section{position:relative;scroll-margin-top:72px}
 <a class="wa" href="https://wa.me/5511982839250" target="_blank" rel="noopener noreferrer" aria-label="Chamar no WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.7-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3z"/></svg>
 </a>
+
+<aside class="ck" id="ck" role="region" aria-label="Aviso de privacidade" hidden>
+  <div class="ck-ic" aria-hidden="true"><svg><use href="#i-shield"/></svg></div>
+  <div class="ck-tx"><b>Sua privacidade em primeiro lugar</b><p>Este site <strong>não usa cookies de rastreamento nem de publicidade</strong>. Guardamos só um aviso no seu aparelho para lembrar que você já viu esta mensagem. <a href="privacidade.html">Política de privacidade</a></p></div>
+  <button class="ck-btn" type="button" id="ckOk">Entendi</button>
+</aside>
 
 <!-- POP-UP DA AGENDA -->
 <dialog class="pop" id="agendaPop" aria-labelledby="popTitle">

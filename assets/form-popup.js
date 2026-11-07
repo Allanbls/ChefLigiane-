@@ -85,7 +85,7 @@
     }).then(function (r) {
       if (r.status === 429) throw new Error('limite');
       if (r.status === 400) return r.json().catch(function () { return {}; }).then(function (j) {
-        throw new Error(j && j.error === 'idade' ? 'idade' : 'http 400');
+        throw new Error(j && j.error === 'idade' ? 'idade' : 'http 400' + (j && j.error ? ' ' + j.error : ''));
       });
       if (!r.ok) throw new Error('http ' + r.status);
       dlg.classList.add('is-done');
@@ -97,7 +97,10 @@
       } else if (err && err.message === 'limite') {
         msg.textContent = 'Muitas tentativas seguidas. Aguarde um minuto e tente de novo.';
       } else {
+        var cod = err && err.name === 'AbortError' ? 'tempo esgotado' : (err && err.message ? err.message : 'rede');
         msg.innerHTML = 'Não foi possível enviar agora. Tente de novo ou <a href="' + FALLBACK_URL + '" target="_blank" rel="noopener noreferrer">abra a ficha original</a>.';
+        var c = document.createElement('small'); c.style.cssText = 'display:block;opacity:.6;margin-top:6px';
+        c.textContent = '(código: ' + cod + ')'; msg.appendChild(c);
       }
     }).then(function () {
       clearTimeout(to);

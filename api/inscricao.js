@@ -22,6 +22,10 @@ const ENTRY = {
   origem: '2022160394',
   aceite: '1700356356'
 };
+// Autorização de imagem e voz (opcional). Crie uma pergunta própria no Google Forms (Sim/Não) e cole o número aqui.
+// Enquanto estiver vazio, a resposta vai na primeira linha da carta de apresentação, para a equipe não perder a informação.
+const ENTRY_IMAGEM = '';
+const IDADE_MINIMA = 18;
 
 const LIMITE = { carta: 5000, default: 300 };
 const MAX_BYTES = 16384;               // corpo máximo (a carta já tem até 5000 caracteres)
@@ -59,8 +63,15 @@ function dataValida(s) {
   const p = s.split('-').map(Number);
   const d = new Date(Date.UTC(p[0], p[1] - 1, p[2]));
   if (d.getUTCFullYear() !== p[0] || d.getUTCMonth() !== p[1] - 1 || d.getUTCDate() !== p[2]) return false;
-  const ano = new Date().getUTCFullYear();
-  return p[0] >= 1900 && p[0] <= ano - 10;
+  if (p[0] < 1900) return false;
+  return idade(p) >= 0;
+}
+// idade exata em anos completos (não só pelo ano de nascimento)
+function idade(p) {
+  const h = new Date();
+  let a = h.getUTCFullYear() - p[0];
+  if (h.getUTCMonth() + 1 < p[1] || (h.getUTCMonth() + 1 === p[1] && h.getUTCDate() < p[2])) a--;
+  return a;
 }
 const erro = function (res, codigo, campo) { return res.status(codigo).json(campo ? { ok: false, error: campo } : { ok: false }); };
 
@@ -86,6 +97,9 @@ module.exports = async function handler(req, res) {
   const email = limpa(d.email, 254);
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return erro(res, 400, 'email');
   if (!dataValida(d.nascimento)) return erro(res, 400, 'nascimento');
+  if (idade(d.nascimento.split('-').map(Number)) < IDADE_MINIMA) return erro(res, 400, 'idade');
+  if (d.aceite !== 'Sim') return erro(res, 400, 'aceite');
+  const imagem = d.imagem === 'Sim' ? 'Sim' : 'Não';   // opcional: ausente = não autorizou
   if (String(d.telefone).replace(/\D/g, '').length < 8) return erro(res, 400, 'telefone');
   const outro = d.origem === '__outro__';
   if (outro && (typeof d.origem_outro !== 'string' || !d.origem_outro.trim())) return erro(res, 400, 'origem_outro');
@@ -96,6 +110,8 @@ module.exports = async function handler(req, res) {
   ['nome', 'telefone', 'instagram', 'endereco', 'bairro', 'pais', 'cidade', 'cep', 'area', 'carta'].forEach(function (k) {
     body.set('entry.' + ENTRY[k], cut(k));
   });
+  if (ENTRY_IMAGEM) body.set('entry.' + ENTRY_IMAGEM, imagem);
+  else body.set('entry.' + ENTRY.carta, ('[Autoriza uso de imagem e voz: ' + imagem + ']\n\n' + cut('carta')).slice(0, LIMITE.carta + 60));
 
   const p = d.nascimento.split('-');
   body.set('entry.' + ENTRY.nascimento + '_year', p[0]);

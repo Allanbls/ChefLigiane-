@@ -1333,6 +1333,13 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
 .ck-acts .ck-btn{grid-column:auto}
 .ck-no{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.55)}
 .ck-no:hover{background:rgba(255,255,255,.12)}
+
+/* União Chefs no topo do site, com o logo em destaque */
+.uniao-topo.sec{padding-top:var(--sp-6)}
+.uniao-topo .uc-logo{display:block;width:min(560px,100%);height:auto;margin:0 0 var(--sp-6);filter:drop-shadow(0 10px 24px rgba(92,30,40,.14));animation:ucLogo .9s cubic-bezier(.2,.7,.2,1) both}
+@media (max-width:900px){.uniao-topo .uc-logo{width:min(440px,100%);margin-inline:auto}}
+@keyframes ucLogo{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.uniao-topo .uc-logo{animation:none}}
 </style>
 
 </head>
@@ -1394,6 +1401,97 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
 </header>
 
 <main>
+<section class="sec uniao uniao-topo" id="uniao">
+  <div class="wrap">
+    <div class="uc-hero">
+      <div>
+        <img class="uc-logo" src="imagens/logo_uc.png" alt="União Chefs Empreendedores" width="535" height="155" fetchpriority="high" decoding="async">
+        <h2 class="reveal">Capacitando profissionais, promovendo a gastronomia<span class="script">juntas somos mais fortes!</span></h2>
+        <p class="reveal">Nossa missão é capacitar chefs de confeitaria, gastronomia e panificação e transformá-los em professores, abrindo portas para que compartilhem seu conhecimento em grandes feiras e eventos pelo país.</p>
+        <div class="btns reveal">
+          <a class="btn btn-solid" href="#associar">Quero ser associada</a>
+          <a class="btn" href="https://www.instagram.com/uniaochefsempreendedores/" target="_blank" rel="noopener noreferrer">@uniaochefsempreendedores</a>
+        </div>
+      </div>
+      <div class="uc-visual reveal">
+        <div class="arch"><img src="imagens/quemsomos.jpg" alt="Ligia do Vale, da União Chefs Empreendedores" data-parallax loading="lazy" decoding="async"></div>
+        <div class="tag"><b>Somos uma família, somos um time.</b><span>Aqui, todos ensinam e todos aprendem.</span></div>
+      </div>
+    </div>
+
+    <div class="bcar reveal" id="bcar" role="group" aria-roledescription="carrossel" aria-label="Benefícios da União Chefs">
+      <div class="bcar-top"><span class="script">por que entrar</span><h3>O que você ganha na União Chefs</h3></div>
+      <div class="bcar-track" id="bTrack" tabindex="0">
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="1 de 5"><span class="bn">01</span><div class="ttl">Capacitação</div><p class="big">Capacitamos chefs a se tornarem excelentes no que fazem.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="2 de 5"><span class="bn">02</span><div class="ttl">Oportunidade de ensino</div><p class="big">Oportunidades para você ensinar em grandes feiras e eventos de confeitaria e gastronomia em todo o país.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="3 de 5"><span class="bn">03</span><div class="ttl">Comunidade</div><p class="big">Um espírito de amizade e colaboração entre os chefs.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="4 de 5"><span class="bn">04</span><div class="ttl">Formação de professores</div><p class="big">Um curso específico para formar professores de confeitaria e gastronomia.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="5 de 5"><span class="bn">05</span><div class="ttl">Apoio emocional e contábil</div><p class="big">Indicação de profissionais para suporte emocional, como psicoterapia.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+      </div>
+      <div class="bcar-ctrl">
+        <button class="bbtn" type="button" id="bPrev" aria-label="Benefício anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="dots" id="bDots" style="color:var(--pitanga)" aria-label="Benefícios"></div>
+        <button class="bbtn" type="button" id="bNext" aria-label="Próximo benefício"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+
+
+    <div class="dr" id="diretoria">
+      <div class="dr-head reveal">
+        <div><h3>A diretoria</h3><span class="script">quem faz a união acontecer</span></div>
+        <p>Conheça quem lidera a União Chefs Empreendedores: chefs de todo o Brasil que trabalham pela valorização, pelo apoio e por novas oportunidades para quem vive da gastronomia.</p>
+        <button class="btn btn-solid" type="button" data-dr-open aria-haspopup="dialog">Conheça a diretoria<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      </div>
+      <ul class="dr-track" id="drTrack" aria-label="Diretoria da União Chefs. Arraste para o lado para ver todos.">
+        <li class="lead"><button class="dr-card" type="button" style="--c:#BC2350" data-dr-open="0" aria-haspopup="dialog" aria-label="Conhecer a Chef Ligia do Vale"><span class="dr-ph"><img src="imagens/diretoria/ligia-do-vale-mini.jpg" srcset="imagens/diretoria/ligia-do-vale-mini.jpg 360w, imagens/diretoria/ligia-do-vale.jpg 800w" sizes="(max-width:899px) 62vw, 330px" width="360" height="480" alt="Chef Ligia do Vale" decoding="async" draggable="false" loading="lazy" decoding="async"><span class="dr-badge">Fundadora &amp; CEO</span></span><b>Ligia do Vale</b><small>Fundadora & CEO · União Chefs</small></button></li>
+        <li><button class="dr-card" type="button" style="--c:#FFB81C" data-dr-open="1" aria-haspopup="dialog" aria-label="Conhecer a Chef Paula Santana"><span class="dr-ph"><img src="imagens/diretoria/paula-santana-mini.jpg" srcset="imagens/diretoria/paula-santana-mini.jpg 360w, imagens/diretoria/paula-santana.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Paula Santana" decoding="async" draggable="false" loading="lazy" decoding="async"></span><b>Paula Santana</b><small>Guarulhos, SP</small></button></li>
+        <li><button class="dr-card" type="button" style="--c:#FF9A3D" data-dr-open="2" aria-haspopup="dialog" aria-label="Conhecer a Chef Iuri Sena"><span class="dr-ph"><img src="imagens/diretoria/iuri-sena-mini.jpg" srcset="imagens/diretoria/iuri-sena-mini.jpg 360w, imagens/diretoria/iuri-sena.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Iuri Sena" decoding="async" draggable="false" loading="lazy" decoding="async"></span><b>Iuri Sena</b><small>Guarujá, SP</small></button></li>
+        <li><button class="dr-card" type="button" style="--c:#BC2350" data-dr-open="3" aria-haspopup="dialog" aria-label="Conhecer a Chef Priscilla Junia"><span class="dr-ph"><img src="imagens/diretoria/priscilla-junia-mini.jpg" srcset="imagens/diretoria/priscilla-junia-mini.jpg 360w, imagens/diretoria/priscilla-junia.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Priscilla Junia" decoding="async" draggable="false" loading="lazy" decoding="async"></span><b>Priscilla Junia</b><small>Ribeirão das Neves e Esmeraldas, MG</small></button></li>
+        <li><button class="dr-card" type="button" style="--c:#19B5B0" data-dr-open="4" aria-haspopup="dialog" aria-label="Conhecer a Chef Joelma Venâncio"><span class="dr-ph"><img src="imagens/diretoria/joelma-venancio-mini.jpg" srcset="imagens/diretoria/joelma-venancio-mini.jpg 360w, imagens/diretoria/joelma-venancio.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Joelma Venâncio" loading="lazy" decoding="async" draggable="false"></span><b>Joelma Venâncio</b><small>Diretora · Todo o Brasil</small></button></li>
+        <li><button class="dr-card" type="button" style="--c:#2F9E4F" data-dr-open="5" aria-haspopup="dialog" aria-label="Conhecer a Chef Demontiez Alves"><span class="dr-ph"><img src="imagens/diretoria/demontiez-alves-mini.jpg" srcset="imagens/diretoria/demontiez-alves-mini.jpg 360w, imagens/diretoria/demontiez-alves.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Demontiez Alves" loading="lazy" decoding="async" draggable="false"></span><b>Demontiez Alves</b><small>Juazeiro do Norte, CE</small></button></li>
+        <li><button class="dr-card" type="button" style="--c:#74ACDF" data-dr-open="6" aria-haspopup="dialog" aria-label="Conhecer a Chef Leandro Acevedo"><span class="dr-ph"><img src="imagens/diretoria/leandro-acevedo-mini.jpg" srcset="imagens/diretoria/leandro-acevedo-mini.jpg 360w, imagens/diretoria/leandro-acevedo.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Leandro Acevedo" loading="lazy" decoding="async" draggable="false"></span><b>Leandro Acevedo</b><small>Argentino · Interior de São Paulo</small></button></li>
+        <li><button class="dr-card" type="button" style="--c:#FF9A3D" data-dr-open="7" aria-haspopup="dialog" aria-label="Conhecer a Chef Angélica Oliveira"><span class="dr-ph"><img src="imagens/diretoria/angelica-oliveira-mini.jpg" srcset="imagens/diretoria/angelica-oliveira-mini.jpg 360w, imagens/diretoria/angelica-oliveira.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Angélica Oliveira" loading="lazy" decoding="async" draggable="false"></span><b>Angélica Oliveira</b><small>Poconé, MT</small></button></li>
+        <li><button class="dr-card" type="button" style="--c:#0B7471" data-dr-open="8" aria-haspopup="dialog" aria-label="Conhecer a Chef Ariana Silva"><span class="dr-ph"><img src="imagens/diretoria/ariana-silva-mini.jpg" srcset="imagens/diretoria/ariana-silva-mini.jpg 360w, imagens/diretoria/ariana-silva.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Ariana Silva" loading="lazy" decoding="async" draggable="false"></span><b>Ariana Silva</b><small>Feira de Santana, BA</small></button></li>
+      </ul>
+      <div class="dr-ctrl">
+        <small><svg aria-hidden="true"><use href="#i-swipe"/></svg>arraste para o lado e conheça os 9 chefs</small>
+        <button class="bbtn" type="button" id="drPrev" aria-label="Chefs anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="bbtn" type="button" id="drNext" aria-label="Próximos chefs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="steps" id="associar">
+      <div class="steps-head reveal"><span class="script">seu embarque</span><h3>Como entrar na União Chefs</h3></div>
+      <div class="steps-grid">
+        <div class="tk-w reveal"><article class="tk tk-1">
+          <div class="tk-top"><span class="tk-n">1</span><span class="tk-side"><small>passo</small><span class="script">escreva</span></span><svg class="tk-plane" aria-hidden="true"><use href="#i-plane"/></svg></div>
+          <div class="tk-body"><h3>Prepare sua carta</h3><p>A ficha pede uma carta de apresentação contando sobre você, sua atuação e formação. Escreva com calma, do seu jeito.</p></div>
+        </article></div>
+        <div class="tk-w reveal"><article class="tk tk-2">
+          <div class="tk-top"><span class="tk-n">2</span><span class="tk-side"><small>passo</small><span class="script">preencha</span></span><svg class="tk-plane" aria-hidden="true"><use href="#i-plane"/></svg></div>
+          <div class="tk-body"><h3>Preencha a ficha</h3><p>Tenha em mãos:</p><ul><li>e-mail, telefone e Instagram</li><li>endereço completo e CEP</li><li>data de nascimento</li><li>área de atuação (confeitaria, gastronomia…)</li></ul></div>
+        </article></div>
+        <div class="tk-w reveal"><article class="tk tk-3">
+          <div class="tk-top"><span class="tk-n">3</span><span class="tk-side"><small>passo</small><span class="script">bem-vinda</span></span><svg class="tk-plane" aria-hidden="true"><use href="#i-plane"/></svg></div>
+          <div class="tk-body"><h3>Boas-vindas</h3><p>A equipe analisa sua inscrição e entra em contato pelo WhatsApp para você começar a crescer com a comunidade.</p></div>
+        </article></div>
+      </div>
+    </div>
+
+    <div class="join reveal" id="inscricao">
+      <div class="join-stitch" aria-hidden="true"><svg class="stx" style="left:4%;top:14%;width:74px;transform:rotate(-12deg);color:#FFD873" viewBox="0 0 64 64"><path d="M32 52C14 40 8 31 8 22 8 14 14 9 21 9c5 0 9 3 11 7 2-4 6-7 11-7 7 0 13 5 13 13 0 9-6 18-24 30z"/></svg><svg class="stx" style="left:86%;top:8%;width:70px;transform:rotate(14deg);color:#FFE3EA" viewBox="0 0 64 64"><path d="M32 58V36M28 58h8M32 36C20 30 18 10 32 6c14 4 12 24 0 30M32 36c-6-8-6-24 0-30 6 6 6 22 0 30"/></svg><svg class="stx" style="left:78%;top:62%;width:84px;transform:rotate(-8deg);color:#FFD873" viewBox="0 0 64 64"><path d="M18 40c-10-2-10-18 2-18 0-10 10-14 14-8 6-8 20-2 16 8 8 0 8 16-4 18zM18 40v14h28V40M18 48h28"/></svg><svg class="stx" style="left:8%;top:64%;width:80px;transform:rotate(10deg);color:#FFE3EA" viewBox="0 0 64 64"><path d="M8 32a13 13 0 1 0 26 0 13 13 0 1 0-26 0zM30 32a13 13 0 1 0 26 0 13 13 0 1 0-26 0z"/></svg></div>
+      <div class="join-spr" aria-hidden="true"></div>
+      <span class="script join-kick">juntas somos mais fortes!</span>
+      <h3>Bora crescer juntas?</h3>
+      <p>Chef de confeitaria, gastronomia ou panificação? Preencha a ficha da União Chefs Empreendedores e a equipe fala com você pelo WhatsApp.</p>
+      <div class="join-acts">
+        <a class="join-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfyX739x7UEjZ0RVe3qCy8Pl9KXnCUXPDyyyX_kwvqW2_-Ug/viewform" data-open-form target="_blank" rel="noopener noreferrer"><span>Quero fazer parte</span><span class="ar"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="join-wa" href="https://wa.me/5511982839250" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-wa"/></svg>Contratar a chef</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="hero" id="inicio">
   <canvas id="sprinkles" aria-hidden="true"></canvas>
   <div class="wrap">
@@ -1596,96 +1694,6 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
   </div>
 </section>
 
-<section class="sec uniao" id="uniao">
-  <div class="wrap">
-    <div class="uc-hero">
-      <div>
-        <img class="uc-logo reveal" src="imagens/logo_uc.png" alt="União Chefs Empreendedores" loading="lazy" decoding="async">
-        <h2 class="reveal">Capacitando profissionais, promovendo a gastronomia<span class="script">juntas somos mais fortes!</span></h2>
-        <p class="reveal">Nossa missão é capacitar chefs de confeitaria, gastronomia e panificação e transformá-los em professores, abrindo portas para que compartilhem seu conhecimento em grandes feiras e eventos pelo país.</p>
-        <div class="btns reveal">
-          <a class="btn btn-solid" href="#associar">Quero ser associada</a>
-          <a class="btn" href="https://www.instagram.com/uniaochefsempreendedores/" target="_blank" rel="noopener noreferrer">@uniaochefsempreendedores</a>
-        </div>
-      </div>
-      <div class="uc-visual reveal">
-        <div class="arch"><img src="imagens/quemsomos.jpg" alt="Ligia do Vale, da União Chefs Empreendedores" data-parallax loading="lazy" decoding="async"></div>
-        <div class="tag"><b>Somos uma família, somos um time.</b><span>Aqui, todos ensinam e todos aprendem.</span></div>
-      </div>
-    </div>
-
-    <div class="bcar reveal" id="bcar" role="group" aria-roledescription="carrossel" aria-label="Benefícios da União Chefs">
-      <div class="bcar-top"><span class="script">por que entrar</span><h3>O que você ganha na União Chefs</h3></div>
-      <div class="bcar-track" id="bTrack" tabindex="0">
-        <article class="bslide" role="group" aria-roledescription="slide" aria-label="1 de 5"><span class="bn">01</span><div class="ttl">Capacitação</div><p class="big">Capacitamos chefs a se tornarem excelentes no que fazem.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
-        <article class="bslide" role="group" aria-roledescription="slide" aria-label="2 de 5"><span class="bn">02</span><div class="ttl">Oportunidade de ensino</div><p class="big">Oportunidades para você ensinar em grandes feiras e eventos de confeitaria e gastronomia em todo o país.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
-        <article class="bslide" role="group" aria-roledescription="slide" aria-label="3 de 5"><span class="bn">03</span><div class="ttl">Comunidade</div><p class="big">Um espírito de amizade e colaboração entre os chefs.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
-        <article class="bslide" role="group" aria-roledescription="slide" aria-label="4 de 5"><span class="bn">04</span><div class="ttl">Formação de professores</div><p class="big">Um curso específico para formar professores de confeitaria e gastronomia.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
-        <article class="bslide" role="group" aria-roledescription="slide" aria-label="5 de 5"><span class="bn">05</span><div class="ttl">Apoio emocional e contábil</div><p class="big">Indicação de profissionais para suporte emocional, como psicoterapia.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
-      </div>
-      <div class="bcar-ctrl">
-        <button class="bbtn" type="button" id="bPrev" aria-label="Benefício anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <div class="dots" id="bDots" style="color:var(--pitanga)" aria-label="Benefícios"></div>
-        <button class="bbtn" type="button" id="bNext" aria-label="Próximo benefício"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
-      </div>
-    </div>
-
-
-    <div class="dr" id="diretoria">
-      <div class="dr-head reveal">
-        <div><h3>A diretoria</h3><span class="script">quem faz a união acontecer</span></div>
-        <p>Conheça quem lidera a União Chefs Empreendedores: chefs de todo o Brasil que trabalham pela valorização, pelo apoio e por novas oportunidades para quem vive da gastronomia.</p>
-        <button class="btn btn-solid" type="button" data-dr-open aria-haspopup="dialog">Conheça a diretoria<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-      </div>
-      <ul class="dr-track" id="drTrack" aria-label="Diretoria da União Chefs. Arraste para o lado para ver todos.">
-        <li class="lead"><button class="dr-card" type="button" style="--c:#BC2350" data-dr-open="0" aria-haspopup="dialog" aria-label="Conhecer a Chef Ligia do Vale"><span class="dr-ph"><img src="imagens/diretoria/ligia-do-vale-mini.jpg" srcset="imagens/diretoria/ligia-do-vale-mini.jpg 360w, imagens/diretoria/ligia-do-vale.jpg 800w" sizes="(max-width:899px) 62vw, 330px" width="360" height="480" alt="Chef Ligia do Vale" decoding="async" draggable="false" loading="lazy" decoding="async"><span class="dr-badge">Fundadora &amp; CEO</span></span><b>Ligia do Vale</b><small>Fundadora & CEO · União Chefs</small></button></li>
-        <li><button class="dr-card" type="button" style="--c:#FFB81C" data-dr-open="1" aria-haspopup="dialog" aria-label="Conhecer a Chef Paula Santana"><span class="dr-ph"><img src="imagens/diretoria/paula-santana-mini.jpg" srcset="imagens/diretoria/paula-santana-mini.jpg 360w, imagens/diretoria/paula-santana.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Paula Santana" decoding="async" draggable="false" loading="lazy" decoding="async"></span><b>Paula Santana</b><small>Guarulhos, SP</small></button></li>
-        <li><button class="dr-card" type="button" style="--c:#FF9A3D" data-dr-open="2" aria-haspopup="dialog" aria-label="Conhecer a Chef Iuri Sena"><span class="dr-ph"><img src="imagens/diretoria/iuri-sena-mini.jpg" srcset="imagens/diretoria/iuri-sena-mini.jpg 360w, imagens/diretoria/iuri-sena.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Iuri Sena" decoding="async" draggable="false" loading="lazy" decoding="async"></span><b>Iuri Sena</b><small>Guarujá, SP</small></button></li>
-        <li><button class="dr-card" type="button" style="--c:#BC2350" data-dr-open="3" aria-haspopup="dialog" aria-label="Conhecer a Chef Priscilla Junia"><span class="dr-ph"><img src="imagens/diretoria/priscilla-junia-mini.jpg" srcset="imagens/diretoria/priscilla-junia-mini.jpg 360w, imagens/diretoria/priscilla-junia.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Priscilla Junia" decoding="async" draggable="false" loading="lazy" decoding="async"></span><b>Priscilla Junia</b><small>Ribeirão das Neves e Esmeraldas, MG</small></button></li>
-        <li><button class="dr-card" type="button" style="--c:#19B5B0" data-dr-open="4" aria-haspopup="dialog" aria-label="Conhecer a Chef Joelma Venâncio"><span class="dr-ph"><img src="imagens/diretoria/joelma-venancio-mini.jpg" srcset="imagens/diretoria/joelma-venancio-mini.jpg 360w, imagens/diretoria/joelma-venancio.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Joelma Venâncio" loading="lazy" decoding="async" draggable="false"></span><b>Joelma Venâncio</b><small>Diretora · Todo o Brasil</small></button></li>
-        <li><button class="dr-card" type="button" style="--c:#2F9E4F" data-dr-open="5" aria-haspopup="dialog" aria-label="Conhecer a Chef Demontiez Alves"><span class="dr-ph"><img src="imagens/diretoria/demontiez-alves-mini.jpg" srcset="imagens/diretoria/demontiez-alves-mini.jpg 360w, imagens/diretoria/demontiez-alves.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Demontiez Alves" loading="lazy" decoding="async" draggable="false"></span><b>Demontiez Alves</b><small>Juazeiro do Norte, CE</small></button></li>
-        <li><button class="dr-card" type="button" style="--c:#74ACDF" data-dr-open="6" aria-haspopup="dialog" aria-label="Conhecer a Chef Leandro Acevedo"><span class="dr-ph"><img src="imagens/diretoria/leandro-acevedo-mini.jpg" srcset="imagens/diretoria/leandro-acevedo-mini.jpg 360w, imagens/diretoria/leandro-acevedo.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Leandro Acevedo" loading="lazy" decoding="async" draggable="false"></span><b>Leandro Acevedo</b><small>Argentino · Interior de São Paulo</small></button></li>
-        <li><button class="dr-card" type="button" style="--c:#FF9A3D" data-dr-open="7" aria-haspopup="dialog" aria-label="Conhecer a Chef Angélica Oliveira"><span class="dr-ph"><img src="imagens/diretoria/angelica-oliveira-mini.jpg" srcset="imagens/diretoria/angelica-oliveira-mini.jpg 360w, imagens/diretoria/angelica-oliveira.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Angélica Oliveira" loading="lazy" decoding="async" draggable="false"></span><b>Angélica Oliveira</b><small>Poconé, MT</small></button></li>
-        <li><button class="dr-card" type="button" style="--c:#0B7471" data-dr-open="8" aria-haspopup="dialog" aria-label="Conhecer a Chef Ariana Silva"><span class="dr-ph"><img src="imagens/diretoria/ariana-silva-mini.jpg" srcset="imagens/diretoria/ariana-silva-mini.jpg 360w, imagens/diretoria/ariana-silva.jpg 800w" sizes="(max-width:899px) 42vw, 236px" width="360" height="480" alt="Chef Ariana Silva" loading="lazy" decoding="async" draggable="false"></span><b>Ariana Silva</b><small>Feira de Santana, BA</small></button></li>
-      </ul>
-      <div class="dr-ctrl">
-        <small><svg aria-hidden="true"><use href="#i-swipe"/></svg>arraste para o lado e conheça os 9 chefs</small>
-        <button class="bbtn" type="button" id="drPrev" aria-label="Chefs anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button class="bbtn" type="button" id="drNext" aria-label="Próximos chefs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
-      </div>
-    </div>
-
-    <div class="steps" id="associar">
-      <div class="steps-head reveal"><span class="script">seu embarque</span><h3>Como entrar na União Chefs</h3></div>
-      <div class="steps-grid">
-        <div class="tk-w reveal"><article class="tk tk-1">
-          <div class="tk-top"><span class="tk-n">1</span><span class="tk-side"><small>passo</small><span class="script">escreva</span></span><svg class="tk-plane" aria-hidden="true"><use href="#i-plane"/></svg></div>
-          <div class="tk-body"><h3>Prepare sua carta</h3><p>A ficha pede uma carta de apresentação contando sobre você, sua atuação e formação. Escreva com calma, do seu jeito.</p></div>
-        </article></div>
-        <div class="tk-w reveal"><article class="tk tk-2">
-          <div class="tk-top"><span class="tk-n">2</span><span class="tk-side"><small>passo</small><span class="script">preencha</span></span><svg class="tk-plane" aria-hidden="true"><use href="#i-plane"/></svg></div>
-          <div class="tk-body"><h3>Preencha a ficha</h3><p>Tenha em mãos:</p><ul><li>e-mail, telefone e Instagram</li><li>endereço completo e CEP</li><li>data de nascimento</li><li>área de atuação (confeitaria, gastronomia…)</li></ul></div>
-        </article></div>
-        <div class="tk-w reveal"><article class="tk tk-3">
-          <div class="tk-top"><span class="tk-n">3</span><span class="tk-side"><small>passo</small><span class="script">bem-vinda</span></span><svg class="tk-plane" aria-hidden="true"><use href="#i-plane"/></svg></div>
-          <div class="tk-body"><h3>Boas-vindas</h3><p>A equipe analisa sua inscrição e entra em contato pelo WhatsApp para você começar a crescer com a comunidade.</p></div>
-        </article></div>
-      </div>
-    </div>
-
-    <div class="join reveal" id="inscricao">
-      <div class="join-stitch" aria-hidden="true"><svg class="stx" style="left:4%;top:14%;width:74px;transform:rotate(-12deg);color:#FFD873" viewBox="0 0 64 64"><path d="M32 52C14 40 8 31 8 22 8 14 14 9 21 9c5 0 9 3 11 7 2-4 6-7 11-7 7 0 13 5 13 13 0 9-6 18-24 30z"/></svg><svg class="stx" style="left:86%;top:8%;width:70px;transform:rotate(14deg);color:#FFE3EA" viewBox="0 0 64 64"><path d="M32 58V36M28 58h8M32 36C20 30 18 10 32 6c14 4 12 24 0 30M32 36c-6-8-6-24 0-30 6 6 6 22 0 30"/></svg><svg class="stx" style="left:78%;top:62%;width:84px;transform:rotate(-8deg);color:#FFD873" viewBox="0 0 64 64"><path d="M18 40c-10-2-10-18 2-18 0-10 10-14 14-8 6-8 20-2 16 8 8 0 8 16-4 18zM18 40v14h28V40M18 48h28"/></svg><svg class="stx" style="left:8%;top:64%;width:80px;transform:rotate(10deg);color:#FFE3EA" viewBox="0 0 64 64"><path d="M8 32a13 13 0 1 0 26 0 13 13 0 1 0-26 0zM30 32a13 13 0 1 0 26 0 13 13 0 1 0-26 0z"/></svg></div>
-      <div class="join-spr" aria-hidden="true"></div>
-      <span class="script join-kick">juntas somos mais fortes!</span>
-      <h3>Bora crescer juntas?</h3>
-      <p>Chef de confeitaria, gastronomia ou panificação? Preencha a ficha da União Chefs Empreendedores e a equipe fala com você pelo WhatsApp.</p>
-      <div class="join-acts">
-        <a class="join-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfyX739x7UEjZ0RVe3qCy8Pl9KXnCUXPDyyyX_kwvqW2_-Ug/viewform" data-open-form target="_blank" rel="noopener noreferrer"><span>Quero fazer parte</span><span class="ar"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-        <a class="join-wa" href="https://wa.me/5511982839250" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-wa"/></svg>Contratar a chef</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 </main>
 
@@ -1831,7 +1839,6 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
       <div class="fm-row" aria-hidden="true"><svg class="stx" style="color:#BC2350" viewBox="0 0 64 64"><path d="M10 54h44M14 54V40h36v14M20 40V28h24v12M32 28V19M32 11c-3 3-3 6 0 8 3-2 3-5 0-8zM14 47c6 4 12-4 18 0s12-4 18 0"/></svg><svg class="stx" style="color:#0B7471" viewBox="0 0 64 64"><path d="M32 58V36M28 58h8M32 36C20 30 18 10 32 6c14 4 12 24 0 30M32 36c-6-8-6-24 0-30 6 6 6 22 0 30"/></svg><svg class="stx" style="color:#6A4038" viewBox="0 0 64 64"><path d="M18 32a14 14 0 1 0 28 0 14 14 0 1 0-28 0zM14 46c6 6 30 6 36 0l-4 12H18zM26 26h2M34 24h2M38 32h2M28 36h2M24 31h1"/></svg><svg class="stx" style="color:#3A1F1A" viewBox="0 0 64 64"><path d="M18 40c-10-2-10-18 2-18 0-10 10-14 14-8 6-8 20-2 16 8 8 0 8 16-4 18zM18 40v14h28V40M18 48h28"/></svg><svg class="stx" style="color:#FF9A3D" viewBox="0 0 64 64"><path d="M16 34h32l-5 22H21zM25 34l2 22M32 34v22M39 34l-2 22M14 34c-4-12 8-20 14-16 2-10 14-10 16 0 8-2 12 10 6 16M32 10c1-4 4-6 7-6"/></svg><svg class="stx" style="color:#6A4038" viewBox="0 0 64 64"><path d="M14 10h36v44H14zM14 24h36M14 39h36M32 10v44"/></svg><svg class="stx" style="color:#BC2350" viewBox="0 0 64 64"><path d="M13 50a9 9 0 1 0 18 0 9 9 0 1 0-18 0zM33 46a9 9 0 1 0 18 0 9 9 0 1 0-18 0zM22 41c2-15 8-25 18-31M42 37c-2-11-4-19-2-27M40 10c6-4 12-2 14 2-6 2-10 1-14-2z"/></svg><svg class="stx" style="color:#0B7471" viewBox="0 0 64 64"><path d="M10 26h44M14 26v20c0 6 4 10 10 10h16c6 0 10-4 10-10V26M6 30h8M50 30h8M26 26v-6h12v6M25 15c0-4 4-4 4-8M35 15c0-4 4-4 4-8"/></svg><svg class="stx" style="color:#C9822F" viewBox="0 0 64 64"><path d="M32 58V14M32 18c-6-2-8-8-6-12 4 2 6 6 6 12 0-6 2-10 6-12 2 4 0 10-6 12M32 30c-8-2-10-8-8-12 4 2 8 6 8 12 0-6 4-10 8-12 2 4 0 10-8 12M32 42c-8-2-10-8-8-12 4 2 8 6 8 12 0-6 4-10 8-12 2 4 0 10-8 12"/></svg><svg class="stx" style="color:#BC2350" viewBox="0 0 64 64"><path d="M32 52C14 40 8 31 8 22 8 14 14 9 21 9c5 0 9 3 11 7 2-4 6-7 11-7 7 0 13 5 13 13 0 9-6 18-24 30z"/></svg></div>
   </div>
 </dialog>
-
 
 <!-- Diretoria União Chefs Empreendedores: pop-up em tela cheia (cenas montadas por assets/diretoria.js) -->
 <div class="drp" id="drPop" role="dialog" aria-modal="true" aria-labelledby="drpTitle" tabindex="-1">

@@ -1486,6 +1486,20 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
   .uc-inf .inf-line,.uc-inf .inf-glow,.dr-cta::after,.dr-tap,.uniao-topo .uc-logo{animation:none}
   .tl.js-tl .tl-item{opacity:1;transform:none}
 }
+
+/* rodada 4: botão de ponta a ponta, logo grande na diretoria */
+.uniao{overflow-x:clip}
+.motivos .mot-fim{grid-column:1 / -1;align-items:center;text-align:center;margin-top:var(--sp-7)}
+.mot-full{display:flex;justify-content:center;width:100vw;margin-inline:calc(50% - 50vw);border-radius:0;min-height:78px;font-size:clamp(1.15rem,4.6vw,1.5rem);letter-spacing:.01em;gap:14px;transition:background .3s,gap .3s}
+.mot-full:hover,.mot-full:focus-visible{gap:22px}
+.mot-full .ic{width:24px;height:24px}
+.drp-hero .drp-logo{position:relative;display:block;width:min(560px,86vw);margin-bottom:26px}
+.drp-hero .drp-logo img{display:block;width:100%;height:auto}
+.drp-hero .drp-logo .uc-inf{position:absolute;inset:0;width:100%;height:100%}
+.drp-hero.in .drp-logo img{animation:drpLogo 5s ease-in-out 1.2s infinite}
+@keyframes drpLogo{0%,100%{transform:none}50%{transform:scale(1.025)}}
+.pop-face img{object-position:50% 35%}
+@media (prefers-reduced-motion:reduce){.drp-hero.in .drp-logo img{animation:none}}
 </style>
 
 </head>
@@ -1610,8 +1624,7 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
         <li class="tl-item c-m"><span class="tl-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><div class="tl-txt"><span class="tl-n">06 · Apoio</span><p>Suporte emocional e contábil.</p></div></li>
       </ol>
       <div class="mot-fim reveal">
-        <p class="mot-frase" data-split>Você entra com o seu talento. A gente entra com o resto.</p>
-        <a class="btn btn-solid mot-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdfyX739x7UEjZ0RVe3qCy8Pl9KXnCUXPDyyyX_kwvqW2_-Ug/viewform" data-open-form target="_blank" rel="noopener noreferrer">Quero me associar<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-solid mot-btn mot-full" href="https://docs.google.com/forms/d/e/1FAIpQLSdfyX739x7UEjZ0RVe3qCy8Pl9KXnCUXPDyyyX_kwvqW2_-Ug/viewform" data-open-form target="_blank" rel="noopener noreferrer">Quero me associar<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <small>Para iniciantes e experientes, do Brasil e de qualquer país.</small>
       </div>
     </div>
@@ -1927,7 +1940,7 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
     <div class="pop-sun" aria-hidden="true"><svg viewBox="0 0 400 400"><use href="#bigsun"/></svg></div>
     <button class="pop-close" type="button" id="popClose" aria-label="Fechar agenda"><svg><use href="#i-close"/></svg></button>
     <div class="pop-top">
-      <div class="pop-face"><img src="imagens/argentina.jpg" alt="Ligia do Vale" width="492" height="394" loading="eager" fetchpriority="high" decoding="async"></div>
+      <div class="pop-face"><img src="imagens/ligia-agenda.jpg" alt="Ligia do Vale" width="440" height="440" loading="eager" fetchpriority="high" decoding="async"></div>
       <div class="pop-title">
         <span class="script">vem me encontrar!</span>
         <h2 id="popTitle">Agenda de <span data-ag-mes>Novembro</span></h2>
@@ -2026,7 +2039,7 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
   <nav class="drp-dots" id="drpDots" aria-label="Diretores"></nav>
   <header class="drp-hero" id="drpHero">
     <div class="drp-bg" aria-hidden="true"></div>
-    <img class="drp-logo" src="imagens/logo_uc.png" alt="União Chefs Empreendedores" data-logo loading="lazy" decoding="async">
+    <span class="drp-logo"><img src="imagens/logo_uc.png" alt="União Chefs Empreendedores" width="535" height="155" data-logo loading="lazy" decoding="async"><svg class="uc-inf" viewBox="0 0 535 155" aria-hidden="true"><path class="inf-glow" pathLength="100" d="M213,73 C229,53 252,48 264,55 C278,64 278,86 264,94 C250,101 229,93 213,73 C197,53 180,48 169,55 C156,64 156,86 169,94 C181,101 197,93 213,73Z"/><path class="inf-line" pathLength="100" d="M213,73 C229,53 252,48 264,55 C278,64 278,86 264,94 C250,101 229,93 213,73 C197,53 180,48 169,55 C156,64 156,86 169,94 C181,101 197,93 213,73Z"/></svg></span>
     <h1 id="drpTitle">Conheça a <em class="hl">diretoria</em></h1>
     <span class="script">nove chefs, uma só união</span>
     <p class="drp-hint">Role para conhecer</p>
@@ -2045,8 +2058,8 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
 
 <script src="vendor/gsap-3.12.5.min.js"></script>
 <script src="vendor/ScrollTrigger-3.12.5.min.js"></script>
-<script src="assets/uniao-anim.js?v=1"></script>
-<script src="assets/app.js?v=23"></script>
+<script src="assets/uniao-anim.js?v=2"></script>
+<script src="assets/app.js?v=24"></script>
 <script src="assets/form-popup.js?v=3"></script>
 <script src="assets/diretoria.js?v=13"></script>
 <script src="assets/analytics.js?v=4"></script>

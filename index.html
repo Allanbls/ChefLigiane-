@@ -1340,6 +1340,17 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
 @media (max-width:900px){.uniao-topo .uc-logo{width:min(440px,100%);margin-inline:auto}}
 @keyframes ucLogo{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.uniao-topo .uc-logo{animation:none}}
+
+/* União: fatos de alcance e benefícios curtos e diretos */
+.uc-fatos{list-style:none;padding:0;margin:var(--sp-5) 0 0;display:flex;flex-wrap:wrap;gap:10px}
+.uc-fatos li{display:flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:999px;background:#fffaf3;box-shadow:0 6px 18px rgba(92,30,40,.08);font-weight:700;font-size:.95rem;color:var(--cacau);line-height:1.25}
+.uc-fatos svg{flex:0 0 22px;width:22px;height:22px;fill:none;stroke:var(--pitanga);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.uc-fatos li:nth-child(2) svg{stroke:var(--mar)}
+.uc-fatos li:nth-child(3) svg{stroke:#c98a00}
+.uc-hero p strong{color:var(--cacau)}
+.bslide{min-height:210px}
+.bslide .frase{margin-top:auto;font-family:var(--f-display);font-size:clamp(1.6rem,5.4vw,2.05rem);line-height:1.08;color:var(--cacau);max-width:12ch}
+@media (max-width:600px){.uc-fatos li{width:100%}.bslide{min-height:190px}}
 </style>
 
 </head>
@@ -1406,8 +1417,13 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
     <div class="uc-hero">
       <div>
         <img class="uc-logo" src="imagens/logo_uc.png" alt="União Chefs Empreendedores" width="535" height="155" fetchpriority="high" decoding="async">
-        <h2 class="reveal">Capacitando profissionais, promovendo a gastronomia<span class="script">juntas somos mais fortes!</span></h2>
-        <p class="reveal">Nossa missão é capacitar chefs de confeitaria, gastronomia e panificação e transformá-los em professores, abrindo portas para que compartilhem seu conhecimento em grandes feiras e eventos pelo país.</p>
+        <h2 class="reveal">Chefs de todo o Brasil, juntos para crescer<span class="script">e já cruzando fronteiras!</span></h2>
+        <p class="reveal">Existimos para <strong>valorizar a nossa categoria</strong> e abrir portas para quem está começando: confeiteiros, chefs de cozinha e pequenos negócios que têm conhecimento de sobra e merecem espaço.</p>
+        <ul class="uc-fatos reveal" aria-label="A União Chefs em números de alcance">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Chefs de todo o país e de fora dele</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h13l3-4h2M5 17V9h9v8M14 11h4l2 2"/><circle cx="7.5" cy="18" r="1.6"/><circle cx="16.5" cy="18" r="1.6"/></svg>Caravanas pelo Brasil inteiro</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 15.5l19-7-3.5 9.5-5-3-3 4v-5.5l9-5.5"/></svg>Viagens internacionais já começaram</li>
+        </ul>
         <div class="btns reveal">
           <a class="btn btn-solid" href="#associar">Quero ser associada</a>
           <a class="btn" href="https://www.instagram.com/uniaochefsempreendedores/" target="_blank" rel="noopener noreferrer">@uniaochefsempreendedores</a>
@@ -1420,13 +1436,14 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
     </div>
 
     <div class="bcar reveal" id="bcar" role="group" aria-roledescription="carrossel" aria-label="Benefícios da União Chefs">
-      <div class="bcar-top"><span class="script">por que entrar</span><h3>O que você ganha na União Chefs</h3></div>
+      <div class="bcar-top"><span class="script">por que entrar</span><h3>O que a União faz por você</h3></div>
       <div class="bcar-track" id="bTrack" tabindex="0">
-        <article class="bslide" role="group" aria-roledescription="slide" aria-label="1 de 5"><span class="bn">01</span><div class="ttl">Capacitação</div><p class="big">Capacitamos chefs a se tornarem excelentes no que fazem.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
-        <article class="bslide" role="group" aria-roledescription="slide" aria-label="2 de 5"><span class="bn">02</span><div class="ttl">Oportunidade de ensino</div><p class="big">Oportunidades para você ensinar em grandes feiras e eventos de confeitaria e gastronomia em todo o país.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
-        <article class="bslide" role="group" aria-roledescription="slide" aria-label="3 de 5"><span class="bn">03</span><div class="ttl">Comunidade</div><p class="big">Um espírito de amizade e colaboração entre os chefs.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
-        <article class="bslide" role="group" aria-roledescription="slide" aria-label="4 de 5"><span class="bn">04</span><div class="ttl">Formação de professores</div><p class="big">Um curso específico para formar professores de confeitaria e gastronomia.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
-        <article class="bslide" role="group" aria-roledescription="slide" aria-label="5 de 5"><span class="bn">05</span><div class="ttl">Apoio emocional e contábil</div><p class="big">Indicação de profissionais para suporte emocional, como psicoterapia.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="1 de 6"><span class="bn">01</span><div class="ttl">Capacitação</div><p class="frase">Aprenda com as melhores.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="2 de 6"><span class="bn">02</span><div class="ttl">Palco</div><p class="frase">Ensine em feiras e eventos pelo país.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="3 de 6"><span class="bn">03</span><div class="ttl">Viagens</div><p class="frase">Do Brasil para o mundo.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="4 de 6"><span class="bn">04</span><div class="ttl">Formação de professores</div><p class="frase">Seu saber vira aula.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="5 de 6"><span class="bn">05</span><div class="ttl">Comunidade</div><p class="frase">Ninguém cresce sozinho.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
+        <article class="bslide" role="group" aria-roledescription="slide" aria-label="6 de 6"><span class="bn">06</span><div class="ttl">Apoio</div><p class="frase">Suporte emocional e contábil.</p><svg class="deco" aria-hidden="true"><use href="#i-heart"/></svg></article>
       </div>
       <div class="bcar-ctrl">
         <button class="bbtn" type="button" id="bPrev" aria-label="Benefício anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>

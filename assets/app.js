@@ -234,6 +234,7 @@ if(hasG&&!reduce){
 safe("video",function(){
 /* ---------- vídeo ---------- */
 const kv=$('kVideo'),kb=$('kPlay'),ki=$('kIcon');
+if(!kv||!kb)return;
 document.querySelectorAll('video[poster]').forEach(v=>{const t=new Image();t.onerror=()=>{v.poster=v.getAttribute('poster').split('/').pop();};t.src=v.getAttribute('poster');});
 kb.addEventListener('click',()=>{if(kv.paused){kv.play();ki.innerHTML='<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>';kb.setAttribute('aria-label','Pausar vídeo');}
   else{kv.pause();ki.innerHTML='<path d="M8 5v14l11-7z"/>';kb.setAttribute('aria-label','Tocar vídeo');}});

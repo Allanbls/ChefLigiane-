@@ -1296,25 +1296,17 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
 }
 @media (prefers-reduced-motion:reduce){.drp-stage .drp-fig.on{visibility:visible;opacity:1}}
 
-/* ===== v22: fileira da diretoria que reage ao arrasto ===== */
+/* ===== v22: fileira da diretoria — leve e suave ===== */
 .dr-track.dr-wait .dr-card{visibility:hidden}
-.dr-track .dr-card{position:relative}
-.dr-track .dr-ph{transform-origin:50% 100%;transform:translateY(calc(var(--a,0) * 12px)) scale(calc(1 - var(--a,0) * .07)) rotate(calc(var(--p,0) * -3deg));transition:transform .15s linear}
 .dr-track .dr-ph{padding:0;border:6px solid var(--c)}
 .dr-track .lead .dr-ph{border:8px solid var(--sol)}
-.dr-track .dr-ph img{border-radius:0;transform:translateX(calc(var(--p,0) * -7%)) scale(calc(1.16 + var(--hz,0) - var(--a,0) * .05));transition:transform .15s linear}
-.dr-track .dr-card b,.dr-track .dr-card small{transform:translateX(calc(var(--p,0) * 16px));opacity:calc(1 - var(--a,0) * .35);transition:transform .15s linear,opacity .15s linear}
+.dr-track .dr-ph,.dr-track .dr-card b,.dr-track .dr-card small{transition:transform .6s cubic-bezier(.22,1,.36,1),opacity .6s ease}
+.dr-track li:not(.is-on) .dr-ph{transform:scale(.96);opacity:.85}
+.dr-track li:not(.is-on) .dr-card b,.dr-track li:not(.is-on) .dr-card small{opacity:.7}
 .dr-track .dr-card b{position:relative;width:max-content;max-width:100%}
-.dr-track .dr-card b::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:repeating-linear-gradient(90deg,var(--pitanga) 0 7px,transparent 7px 11px);transform:scaleX(0);transform-origin:0 50%;transition:transform .6s var(--ease)}
+.dr-track .dr-card b::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:repeating-linear-gradient(90deg,var(--pitanga) 0 7px,transparent 7px 11px);transform:scaleX(0);transform-origin:0 50%;transition:transform .7s cubic-bezier(.22,1,.36,1)}
 .dr-track li.is-on .dr-card b::after{transform:scaleX(1)}
-.dr-pop{position:absolute;right:-8px;top:14%;z-index:2;width:clamp(40px,11vw,52px);aspect-ratio:1;pointer-events:none;transform:scale(0) rotate(-60deg);transition:transform .55s cubic-bezier(.34,1.56,.64,1)}
-.dr-pop .drp-patch{position:absolute;inset:0;width:100%;height:100%;opacity:1;transform:none}
-.dr-pop .drp-patch .drw{stroke-dashoffset:1;transition:stroke-dashoffset .9s var(--ease) .2s}
-.dr-track li.is-on .dr-pop{transform:scale(1) rotate(10deg);animation:dr-bob 2.4s ease-in-out .6s infinite alternate}
-.dr-track li.is-on .dr-pop .drw{stroke-dashoffset:0}
-@keyframes dr-bob{from{translate:0 0}to{translate:0 -6px}}
-@media (hover:hover) and (pointer:fine){.dr-track .dr-card:hover{--hz:.06}}
-@media (prefers-reduced-motion:reduce){.dr-track .dr-ph,.dr-track .dr-ph img,.dr-track .dr-card b,.dr-track .dr-card small{transform:none;opacity:1}.dr-pop{display:none}}
+@media (prefers-reduced-motion:reduce){.dr-track .dr-ph,.dr-track .dr-card b,.dr-track .dr-card small{transition:none;transform:none;opacity:1}}
 
 /* ===== v21: ficha de inscrição com mais bordados de doces e cozinha ===== */
 .fm .pop-box{outline:2px dashed color-mix(in srgb,var(--pitanga) 35%,transparent);outline-offset:-10px}
@@ -1755,7 +1747,7 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
     <div class="pop-sun" aria-hidden="true"><svg viewBox="0 0 400 400"><use href="#bigsun"/></svg></div>
     <button class="pop-close" type="button" id="popClose" aria-label="Fechar agenda"><svg><use href="#i-close"/></svg></button>
     <div class="pop-top">
-      <div class="pop-face"><img src="imagens/argentina.jpg" alt="Ligia do Vale" loading="lazy" decoding="async"></div>
+      <div class="pop-face"><img src="imagens/argentina.jpg" alt="Ligia do Vale" width="492" height="394" loading="eager" fetchpriority="high" decoding="async"></div>
       <div class="pop-title">
         <span class="script">vem me encontrar!</span>
         <h2 id="popTitle">Agenda de <span data-ag-mes>Novembro</span></h2>
@@ -1876,7 +1868,7 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
 <script src="vendor/ScrollTrigger-3.12.5.min.js"></script>
 <script src="assets/app.js?v=22"></script>
 <script src="assets/form-popup.js?v=3"></script>
-<script src="assets/diretoria.js?v=12"></script>
+<script src="assets/diretoria.js?v=13"></script>
 <script src="assets/analytics.js?v=4"></script>
 <script src="assets/perf.js?v=1" defer></script>
 </body>

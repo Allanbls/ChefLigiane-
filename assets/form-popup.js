@@ -87,7 +87,9 @@
       if (r.status === 400) return r.json().catch(function () { return {}; }).then(function (j) {
         throw new Error(j && j.error === 'idade' ? 'idade' : 'http 400' + (j && j.error ? ' ' + j.error : ''));
       });
-      if (!r.ok) throw new Error('http ' + r.status);
+      if (!r.ok) return r.json().catch(function () { return {}; }).then(function (j) {
+        throw new Error('http ' + r.status + (j && j.error ? ' ' + j.error : ''));
+      });
       dlg.classList.add('is-done');
       done.focus();
       document.dispatchEvent(new CustomEvent('ld:evento', { detail: { nome: 'enviar_inscricao' } })); // conversão no GA, sem dados pessoais

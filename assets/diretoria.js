@@ -11,31 +11,31 @@
       b: ["Chef confeiteira, professora e embaixadora oficial da Cobertop.",
           "Roda o Brasil com aulas e demonstrações em feiras e eventos, com técnica, alegria e muito chocolate.",
           "Ajuda chefs a virarem professores e a crescer na profissão. “Aqui, crescemos juntos.”"],
-      e: [["rings", "chocolate"], ["mic"], ["gradcap", "heart"]] },
+      e: [["chocolate"], ["mic"], []] },
     { n: "Paula Santana", r: "Guarulhos, SP", f: "paula-santana", t: 'Gastrônoma e <span class="hl">confeiteira</span> artesanal infantil',
       b: ["Gastrônoma de Guarulhos, SP, especializada em confeitaria artesanal infantil.", "Apaixonada pela arte em pasta americana e sempre aprendendo.", "Dona da Paula’s Cakes Confeitaria, onde o amor pelo doce se torna único."],
-      e: [["pin", "chefhat"], ["whisk", "cake"], ["heart"]] },
+      e: [["pin"], ["whisk"], ["heart"]] },
     { n: "Iuri Sena", r: "Guarujá, SP", f: "iuri-sena", t: 'Ninguém é <span class="hl">Campeão</span> Sozinho.',
       b: ["Professor, empreendedor e Cake Designer de Guarujá, SP. Campeão do Que Seja Doce (GNT).", "Também venceu Melhor Brigadeiro (Mauá-SP) e Melhor Sobremesa de Pitanga (Guarujá-SP).", "Criou a Bailarina Elétrica, equipamento que inovou o trabalho na confeitaria."],
-      e: [["trophy"], ["brigadeiro", "star"], ["stand", "book"]] },
+      e: [["trophy"], ["brigadeiro"], ["star"]] },
     { n: "Priscilla Junia", r: "Ribeirão das Neves e Esmeraldas, MG", f: "priscilla-junia", t: 'Liderar é transformar <span class="hl">paixão</span> em oportunidades',
       b: ["Diretora da União Chefs Empreendedores.", "Representa Ribeirão das Neves e Esmeraldas, em Minas Gerais.", "“Liderar é valorizar quem faz da gastronomia uma arte.”"],
-      e: [["crown"], ["pin"], ["flame", "heart"]] },
+      e: [["crown"], ["pin"], ["heart"]] },
     { n: "Joelma Venâncio", r: "Diretora · Todo o Brasil", f: "joelma-venancio", t: 'Quando Deus está à frente, o impossível vira <span class="hl">testemunho</span>',
       b: ["Especialista em chantininho, atendimento em camarins e produção de artistas em todo o Brasil.", "Movida por sonhos, propósito e fé. 🍒✨"],
-      e: [["pipingbag", "star"], ["cherry", "heart"]] },
+      e: [["pipingbag", "star"], ["cherry"]] },
     { n: "Demontiez Alves", r: "Juazeiro do Norte, CE", f: "demontiez-alves", t: 'Mais que doces, <span class="hl">experiências</span> surpreendentes',
       b: ["Tecnólogo em Alimentos de Juazeiro do Norte, CE. Com a esposa, criou o Atelier Ideias Doces, doceria artesanal.", "Na União Chefs Empreendedores, mostra seu trabalho e cresce na profissão."],
-      e: [["rings", "cupcake"], ["gift", "star"]] },
+      e: [["cupcake", "rings"], ["gift"]] },
     { n: "Leandro Acevedo", r: "Argentino · Interior de São Paulo", f: "leandro-acevedo", t: 'Criatividade, dedicação e <span class="hl">amor</span> pelo que faço',
       b: ["Argentino, mora no interior de São Paulo. Confeiteiro profissional e empreendedor.", "Transforma ingredientes em experiências e emoções, sempre buscando inovar."],
-      e: [["sun", "whisk"], ["book", "heart"]] },
+      e: [["whisk", "sun"], ["heart"]] },
     { n: "Angélica Oliveira", r: "Poconé, MT", f: "angelica-oliveira", t: 'Transformar ingredientes em <span class="hl">amor</span>',
       b: ["De Poconé, MT. Formada em Gastronomia e pós-graduada em Confeitaria e Panificação.", "Para ela, confeitar é criar memórias afetivas e levar felicidade às pessoas.", "Na União Chefs Empreendedores, troca experiências e cresce junto. 💕"],
-      e: [["gradcap", "bread"], ["heart", "cake"], ["rings"]] },
+      e: [["gradcap"], ["cake"], ["heart"]] },
     { n: "Ariana Silva", r: "Feira de Santana, BA", f: "ariana-silva", t: 'Talento, experiência e <span class="hl">dedicação</span>',
       b: ["Renomada chef de cozinha de Feira de Santana, na Bahia.", "Na diretoria, contribui com talento e dedicação para a associação crescer."],
-      e: [["chefhat", "pot"], ["star", "rings"]] }
+      e: [["chefhat", "pot"], ["star"]] }
   ];
   var COR = ["#BC2350", "#FFB81C", "#FF9A3D", "#BC2350", "#19B5B0", "#2F9E4F", "#74ACDF", "#FF9A3D", "#0B7471"];
   var SCENE = ["#FFB81C", "#FFB81C", "#FF9A3D", "#BC2350", "#19B5B0", "#2F9E4F", "#74ACDF", "#FF9A3D", "#0B7471"];
@@ -90,7 +90,7 @@
     return '<svg class="drp-bgi" viewBox="0 0 64 64" style="left:' + pos[0] + "%;top:" + pos[1] + "%;--k:" + pos[2] + ";--sp:" + pos[3] + '"><path d="' + (ICON[name] || ICON.sparkle) + '"/></svg>';
   }
   /* lugares ao redor da foto (em % da caixa da foto) */
-  var SLOT = [[-20, 26], [84, 10], [-18, 54], [86, 38], [84, 64]];
+  var SLOT = [[-20, 26], [84, 10], [84, 58], [-18, 54], [86, 38]];
   var ROT = [-12, 9, 6, -8, 14, -5, -14, 10];
 
   /* logo da ficha de inscrição: some sem deixar buraco se a imagem faltar */
@@ -520,39 +520,25 @@
     var upd = function () { if (prev) prev.disabled = track.scrollLeft <= 2; if (next) next.disabled = track.scrollLeft >= maxX() - 2; };
     if (prev) prev.addEventListener("click", function () { var x = track.scrollLeft, t = 0; items().forEach(function (_, i) { if (xOf(i) < x - 4) t = i; }); animTo(xOf(t)); });
     if (next) next.addEventListener("click", function () { var x = track.scrollLeft, n = items().length, t = n - 1; for (var i = 0; i < n; i++) if (xOf(i) > x + 4) { t = i; break; } animTo(xOf(t)); });
-    /* cada chef "reage" ao arrasto: quem está na vez cresce, sorri para frente e ganha um bordado;
-       quem está passando inclina, afunda e a foto desliza por dentro do arco */
-    var cards = items();
-    var POP = ["crown", "heart", "trophy", "star", "cherry", "cupcake", "sun", "cake", "chefhat"];
-    cards.forEach(function (li, k) {
-      var b = li.querySelector(".dr-card"); if (!b || b.querySelector(".dr-pop")) return;
-      var sp = document.createElement("span"); sp.className = "dr-pop"; sp.setAttribute("aria-hidden", "true");
-      sp.innerHTML = patch(POP[k % POP.length], k % 2 ? "#FFF8EC" : "#BC2350", k % 2 ? THREAD[k % THREAD.length] : "#FFFDF8", "on", 0);
-      b.appendChild(sp);
-    });
-    var onK = -1;
+    /* fileira leve: só marca quem está na vez; o resto é transição suave do CSS */
+    var cards = items(), onK = -1;
     function react() {
       var x = track.scrollLeft, x0 = cards[0].offsetLeft, best = 0, bd = 1e9;
-      cards.forEach(function (li, k) {
-        var p = (li.offsetLeft - x0 - x) / Math.max(1, li.offsetWidth);
-        p = Math.max(-2, Math.min(2, p));
-        li.style.setProperty("--p", p.toFixed(3)); li.style.setProperty("--a", Math.abs(p).toFixed(3));
-        if (Math.abs(p) < bd) { bd = Math.abs(p); best = k; }
-      });
+      cards.forEach(function (li, k) { var d = Math.abs(li.offsetLeft - x0 - x); if (d < bd) { bd = d; best = k; } });
       if (best !== onK) { if (cards[onK]) cards[onK].classList.remove("is-on"); onK = best; cards[best].classList.add("is-on"); }
     }
     var ur = 0;
-    track.addEventListener("scroll", function () { cancelAnimationFrame(ur); ur = requestAnimationFrame(function () { upd(); if (!reduce) react(); }); }, { passive: true });
-    addEventListener("resize", function () { if (!reduce) react(); });
-    if (!reduce) react();
+    track.addEventListener("scroll", function () { cancelAnimationFrame(ur); ur = requestAnimationFrame(function () { upd(); react(); }); }, { passive: true });
+    addEventListener("resize", react);
+    react();
     /* ao chegar na tela, as fotos caem uma a uma e quicam */
     if (window.gsap && !reduce && "IntersectionObserver" in window) {
       track.classList.add("dr-wait");
       var dropIO = new IntersectionObserver(function (es) {
         if (!es.some(function (e) { return e.isIntersecting; })) return;
         dropIO.disconnect(); track.classList.remove("dr-wait");
-        window.gsap.fromTo(track.querySelectorAll(".dr-card"), { y: -140, rotate: function (k) { return k % 2 ? 8 : -8; }, autoAlpha: 0 },
-          { y: 0, rotate: 0, autoAlpha: 1, duration: 1.05, ease: "bounce.out", stagger: .09, clearProps: "transform,opacity,visibility" });
+        window.gsap.fromTo(track.querySelectorAll(".dr-card"), { y: 30, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, duration: .9, ease: "power2.out", stagger: .08, clearProps: "transform,opacity,visibility" });
       }, { rootMargin: "0px 0px -18% 0px" });
       dropIO.observe(track);
     }

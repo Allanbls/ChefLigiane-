@@ -139,10 +139,15 @@ module.exports = async function handler(req, res) {
       signal: ctl.signal
     });
     // o Google responde 200 (ou 302) quando aceita; 4xx quando rejeita
-    if (r.status >= 400) return erro(res, 502);
+    if (r.status >= 400) {
+      console.log('[inscricao] Google recusou: status ' + r.status); // sem dados pessoais
+      return erro(res, 502, 'google ' + r.status);
+    }
     return res.status(200).json({ ok: true });
   } catch (e) {
-    return erro(res, 502);
+    const motivo = e && e.name === 'AbortError' ? 'google demorou (8s)' : 'falha de rede: ' + String(e && (e.cause && e.cause.code || e.message) || '').slice(0, 60);
+    console.log('[inscricao] ' + motivo);
+    return erro(res, 502, motivo);
   } finally {
     clearTimeout(to);
   }

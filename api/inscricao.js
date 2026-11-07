@@ -140,8 +140,20 @@ module.exports = async function handler(req, res) {
     });
     // o Google responde 200 (ou 302) quando aceita; 4xx quando rejeita
     if (r.status >= 400) {
-      console.log('[inscricao] Google recusou: status ' + r.status); // sem dados pessoais
-      return erro(res, 502, 'google ' + r.status);
+      // descobre quais perguntas o Google marcou com erro (classe Jj6Lae), sem registrar respostas
+      let campos = [];
+      try {
+        const html = await r.text();
+        const nomes = {}; Object.keys(ENTRY).forEach(function (k) { nomes[ENTRY[k]] = k; });
+        html.split('role="listitem"').slice(1).forEach(function (bloco) {
+          if (!/class="geS5n[^"]*Jj6Lae/.test(bloco)) return;
+          const m = bloco.match(/data-params="[^"]*?\[\[(\d+),/) || bloco.replace(/&quot;/g, '"').match(/data-params="[^"]*?\[\[(\d+),/);
+          campos.push(m ? (nomes[m[1]] || m[1]) : 'email');
+        });
+      } catch (e) {}
+      const det = 'google ' + r.status + (campos.length ? ': ' + campos.join(',') : '');
+      console.log('[inscricao] ' + det); // só nomes de campos, sem dados pessoais
+      return erro(res, 502, det);
     }
     return res.status(200).json({ ok: true });
   } catch (e) {

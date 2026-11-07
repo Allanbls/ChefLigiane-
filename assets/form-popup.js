@@ -12,6 +12,18 @@
   var outro = document.getElementById('f-outro');
   var lastTrigger = null;
   var FALLBACK_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdfyX739x7UEjZ0RVe3qCy8Pl9KXnCUXPDyyyX_kwvqW2_-Ug/viewform';
+  var IDADE_MINIMA = 18; // igual ao api/inscricao.js
+  var nasc = document.getElementById('f-nasc');
+  var MSG_IDADE = 'A inscrição é só para maiores de ' + IDADE_MINIMA + ' anos.';
+  function hojeMenos(anos) {
+    var h = new Date(), d = new Date(h.getFullYear() - anos, h.getMonth(), h.getDate());
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  if (nasc) {
+    nasc.max = hojeMenos(IDADE_MINIMA);
+    nasc.min = '1900-01-01';
+    nasc.addEventListener('input', function () { nasc.setCustomValidity(''); });
+  }
 
   function open(trigger) {
     lastTrigger = trigger || null;
@@ -52,6 +64,7 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     msg.textContent = '';
+    if (nasc && nasc.value && nasc.value > nasc.max) nasc.setCustomValidity(MSG_IDADE);
     if (!form.checkValidity()) { form.reportValidity(); return; }
 
     var data = {};
@@ -71,12 +84,17 @@
       signal: ctl ? ctl.signal : undefined
     }).then(function (r) {
       if (r.status === 429) throw new Error('limite');
+      if (r.status === 400) return r.json().catch(function () { return {}; }).then(function (j) {
+        throw new Error(j && j.error === 'idade' ? 'idade' : 'http 400');
+      });
       if (!r.ok) throw new Error('http ' + r.status);
       dlg.classList.add('is-done');
       done.focus();
       document.dispatchEvent(new CustomEvent('ld:evento', { detail: { nome: 'enviar_inscricao' } })); // conversão no GA, sem dados pessoais
     }).catch(function (err) {
-      if (err && err.message === 'limite') {
+      if (err && err.message === 'idade') {
+        msg.textContent = MSG_IDADE;
+      } else if (err && err.message === 'limite') {
         msg.textContent = 'Muitas tentativas seguidas. Aguarde um minuto e tente de novo.';
       } else {
         msg.innerHTML = 'Não foi possível enviar agora. Tente de novo ou <a href="' + FALLBACK_URL + '" target="_blank" rel="noopener noreferrer">abra a ficha original</a>.';

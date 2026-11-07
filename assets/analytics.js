@@ -1,5 +1,5 @@
-/* Google Analytics com consentimento (LGPD), carregado pelo Google Tag Manager (ou direto, se só houver ID G-).
-   - Só carrega depois que a pessoa toca em "Aceitar" no aviso de privacidade.
+/* Google Analytics com consentimento (LGPD), carregado pelo Google Tag Manager.
+   - Nenhuma requisição ao Google antes do "Aceitar": o gtm.js só é baixado em carrega().
    - Se ela recusar (ou mudar de ideia depois em "Aviso de cookies"), nada é carregado e os cookies do GA são apagados.
    - IDs ficam no index.html: <meta name="gtm-id" content="GTM-XXXXXXX"> (preferido) ou <meta name="ga-id" content="G-XXXXXXXXXX">.
    - Consent Mode v2: publicidade sempre negada; só "analytics_storage" é concedido, e somente após o aceite.
@@ -7,9 +7,20 @@
      para cada um e um evento do GA4 ligado a ele. */
 (function () {
   "use strict";
-  /* GTM carregado direto no <head> do index.html; aqui só se controla o consentimento */
+  /* v4: o GTM só é baixado aqui, depois do "Aceitar" (antes vinha no <head> para todo visitante) */
   var GTM = "GTM-MLJ7H56F", GA = "";
   var usaGTM = true;
+  var meta = document.querySelector('meta[name="gtm-id"]');
+  if (meta && /^GTM-[A-Z0-9]{4,12}$/.test(meta.content)) GTM = meta.content;
+  var gtmInjetado = false;
+  function injetaGTM() {
+    if (gtmInjetado) return; gtmInjetado = true;
+    window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtm.js?id=" + encodeURIComponent(GTM);
+    document.head.appendChild(s);
+  }
 
   var KEY = "ld_privacidade", loaded = false, ativo = false;
   window.dataLayer = window.dataLayer || [];
@@ -23,7 +34,8 @@
     function carrega() {
     ativo = true;
     loaded = true;
-    gtag("consent", "update", { analytics_storage: "granted" });
+    gtag("consent", "update", { analytics_storage: "granted" }); // antes do gtm.js: a tag já nasce com permissão
+    if (usaGTM) injetaGTM();
   }
   function apagaCookies() {
     ativo = false;

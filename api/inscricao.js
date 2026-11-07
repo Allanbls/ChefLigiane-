@@ -127,10 +127,25 @@ module.exports = async function handler(req, res) {
   body.set('entry.' + ENTRY.aceite, 'Sim');
   body.set('fvv', '1');
   body.set('pageHistory', '0');
+  // campos ocultos que o próprio Google Forms envia (o formulário do cliente manda cópia por e-mail)
+  body.set('emailReceipt', 'true');
+  body.set('dsdoc', 'true');
+  body.set('submissionTimestamp', String(Date.now()));
+  body.set('entry.' + ENTRY.origem + '_sentinel', '');
+  body.set('entry.' + ENTRY.aceite + '_sentinel', '');
 
   const ctl = new AbortController();
-  const to = setTimeout(function () { ctl.abort(); }, 8000);
+  const to = setTimeout(function () { ctl.abort(); }, 9000);
   try {
+    // pega o token da sessão do formulário (fbzx), como faz o navegador ao abrir o Google Forms
+    try {
+      const v = await fetch('https://docs.google.com/forms/d/e/' + FORM_ID + '/viewform', { signal: ctl.signal });
+      const t = (await v.text()).match(/name="fbzx" value="(-?\d+)"/);
+      if (t) {
+        body.set('fbzx', t[1]);
+        body.set('partialResponse', JSON.stringify([null, null, t[1]]));
+      }
+    } catch (e) {}
     const r = await fetch('https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -151,7 +166,7 @@ module.exports = async function handler(req, res) {
           campos.push(m ? (nomes[m[1]] || m[1]) : 'email');
         });
       } catch (e) {}
-      const det = 'google ' + r.status + (campos.length ? ': ' + campos.join(',') : '');
+      const det = 'google ' + r.status + (campos.length ? ': ' + campos.join(',') : ' (sem campo marcado)');
       console.log('[inscricao] ' + det); // só nomes de campos, sem dados pessoais
       return erro(res, 502, det);
     }

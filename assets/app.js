@@ -222,7 +222,7 @@ if(hasG&&!reduce){
   gsap.from('.hero-visual .seal',{scale:0,duration:.9,ease:'back.out(2)',delay:1});
   document.querySelectorAll('[data-count]').forEach(el=>{const t=+el.dataset.count,o={v:0};gsap.to(o,{v:t,duration:1.8,ease:'power2.out',delay:.6,onUpdate:()=>el.textContent=Math.round(o.v)});});
   if(window.ScrollTrigger){
-    gsap.utils.toArray('.reveal').forEach(el=>gsap.from(el,{y:40,opacity:0,duration:.9,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}));
+    gsap.utils.toArray('.reveal').forEach(el=>gsap.from(el,{y:40,opacity:0,duration:.9,delay:parseFloat(el.dataset.d)||0,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}));
     gsap.utils.toArray('[data-parallax]').forEach(img=>gsap.fromTo(img,{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:img.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
     if(innerWidth>600)gsap.from('#cards .card',{clearProps:'all',y:60,rotate:()=>gsap.utils.random(-5,5),opacity:0,duration:.9,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:'#cards',start:'top 85%',once:true}});
     gsap.to('.agenda-sun svg',{rotate:120,ease:'none',scrollTrigger:{trigger:'#agenda',start:'top bottom',end:'bottom top',scrub:true}});

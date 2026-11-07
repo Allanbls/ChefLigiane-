@@ -22,19 +22,20 @@ Abra `assets/app.js`: o bloco `AGENDA` está no começo da seção "agenda". Edi
 1. O domínio `uniaochefsempreendedores.com.br` já está nas páginas, no `robots.txt`, no `sitemap.xml` e no `security.txt`. Conecte esse domínio na Vercel (sem `www` como principal).
 2. Confira no GTM (GTM-MLJ7H56F) a tag do GA4 e os acionadores dos eventos (veja `SEGURANCA.md`, item 6). O `analytics.js` lê o ID da meta `gtm-id` do `index.html`.
 3. Crie `LOG_SALT` na Vercel (veja `SEGURANCA.md`).
-4. A CSP agora fica só no `vercel.json`; não existe mais `<meta>` de CSP nas páginas.
+4. A CSP agora fica só no `vercel.json`; não existe mais `<meta>` de CSP nas páginas. Ela precisa liberar `https://www.googletagmanager.com` e `https://*.google-analytics.com` (script-src, img-src, connect-src).
+5. No Google Forms, crie a pergunta "Autoriza uso de imagem e voz? (Sim/Não)" e cole o número `entry.` dela em `ENTRY_IMAGEM` no `api/inscricao.js`. Até lá, a resposta vai na 1ª linha da carta.
 
 ## Segurança: o que foi aplicado
 | Item | O que foi feito |
 |---|---|
 | HTTPS | HSTS de 2 anos, `upgrade-insecure-requests`, nenhuma chamada `http://`; `.htaccess` redireciona no Apache |
 | Rate limit | `/api/log`: 20 requisições/min por IP, depois 429. É por instância; para limite global use uma regra de Rate Limiting no Vercel Firewall |
-| Validação de inputs | O site não tem mais formulário (o assistente da carta saiu). Restam a agenda (datas AAAA-MM-DD, início ≤ fim, tamanhos máximos, arte só da lista) e a API (POST, mesma origem, tipo de conteúdo, máx. 4 KB, JSON, só campos permitidos) |
+| Validação de inputs | Ficha de inscrição validada no navegador e de novo no servidor (`api/inscricao.js`: e-mail, data, maior de 18 anos, aceite obrigatório, tamanhos máximos, 6 envios/10 min por IP). Agenda (datas AAAA-MM-DD, início ≤ fim, tamanhos máximos, arte só da lista) e a API (POST, mesma origem, tipo de conteúdo, máx. 4 KB, JSON, só campos permitidos) |
 | Sanitização | Textos da agenda passam por escape de HTML; demais textos usam `textContent`; CSP bloqueia script injetado; links externos com `noopener noreferrer` |
 | Controle de acesso | Site público, sem login. Anti-clickjacking (`frame-ancestors 'none'`), `Cross-Origin-*` same-origin, câmera/microfone/localização desligados, API só POST. Ative 2FA no GitHub e na Vercel |
 | Expiração de sessão | Não há login nem cookies. Armazenamento no aparelho: `sessionStorage` (pop-up da agenda, some ao fechar a aba) e `localStorage` com a chave `ld_privacidade` (só lembra que o aviso de privacidade foi visto) |
 | Criptografia | TLS + HSTS. Nada sensível é guardado; o IP no log vira um hash curto com sal |
-| Dependências | Zero scripts, fontes ou estilos de terceiros em tempo de execução. GSAP e fontes fixados e conferíveis: `sha256sum -c vendor/SHA256SUMS` (licenças em `fonts/LICENSES.txt`) |
+| Dependências | Único script de terceiros: Google Tag Manager, baixado só após o "Aceitar" (`analytics.js`). Proteja a conta do GTM com 2FA e poucos usuários: quem edita o container injeta código no site. GSAP e fontes fixados e conferíveis: `sha256sum -c vendor/SHA256SUMS` (licenças em `fonts/LICENSES.txt`) |
 | Monitoramento | Erros de JavaScript e violações de CSP vão para `/api/log` e aparecem em Vercel > Logs (busque `[monitor]`). Para alerta por e-mail, use um Log Drain ou um monitor de uptime |
 
 ## Limites

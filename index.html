@@ -4,9 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<script src="assets/gtm-init.js?v=1"></script>
+<script src="assets/gtm-init.js?v=2"></script>
 <title>Chef Ligia do Vale | Confeiteira, professora e embaixadora Cobertop</title>
 <meta name="versao-site" content="22">
+<meta name="gtm-id" content="GTM-MLJ7H56F">
 <meta name="description" content="Chef confeiteira, professora e embaixadora Cobertop. Aulas, demonstrações e eventos de confeitaria por todo o Brasil e a União Chefs Empreendedores.">
 <meta name="theme-color" content="#FFB81C">
 <meta property="og:title" content="Chef Ligia do Vale">
@@ -1720,7 +1721,7 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
       <div class="fm-f"><label for="f-nome">Nome e sobrenome <i>*</i></label><input id="f-nome" name="nome" type="text" autocomplete="name" required></div>
       <div class="fm-f"><label for="f-tel">Telefone com DDD <i>*</i></label><input id="f-tel" name="telefone" type="tel" autocomplete="tel" placeholder="+5511..." required><small>Ex.: +5511...</small></div>
       <div class="fm-f"><label for="f-insta">Instagram <i>*</i></label><input id="f-insta" name="instagram" type="text" placeholder="@seuperfil" required></div>
-      <div class="fm-f"><label for="f-nasc">Data de nascimento <i>*</i></label><input id="f-nasc" name="nascimento" type="date" autocomplete="bday" required></div>
+      <div class="fm-f"><label for="f-nasc">Data de nascimento <i>*</i></label><input id="f-nasc" name="nascimento" type="date" autocomplete="bday" required aria-describedby="f-nasc-h"><small id="f-nasc-h" style="display:block;margin-top:4px;opacity:.75">A inscrição é para maiores de 18 anos.</small></div>
       <div class="fm-f full"><label for="f-end">Endereço completo <i>*</i></label><input id="f-end" name="endereco" type="text" autocomplete="street-address" required></div>
       <div class="fm-f"><label for="f-bairro">Bairro <i>*</i></label><input id="f-bairro" name="bairro" type="text" required></div>
       <div class="fm-f"><label for="f-cep">CEP <i>*</i></label><input id="f-cep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code" required></div>
@@ -1743,7 +1744,8 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
         </fieldset>
       </div>
       <div class="fm-f full">
-        <label class="fm-check"><input type="checkbox" name="aceite" value="Sim" required><span>Aceito voluntariamente as Regras, Termos e Condições apresentados, e autorizo o uso da minha imagem, voz e o compartilhamento de publicações das minhas redes sociais. <a href="https://drive.google.com/drive/folders/1-GEyiEeM5emSNWmK5-y3yUAAhKAczLpL" target="_blank" rel="noopener noreferrer">Ver regulamento interno</a> <i style="font-style:normal;color:var(--pitanga)">*</i></span></label>
+        <label class="fm-check"><input type="checkbox" name="aceite" value="Sim" required><span>Li e aceito as Regras, Termos e Condições da associação e a <a href="privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>. <a href="https://drive.google.com/drive/folders/1-GEyiEeM5emSNWmK5-y3yUAAhKAczLpL" target="_blank" rel="noopener noreferrer">Ver regulamento interno</a> <i style="font-style:normal;color:var(--pitanga)">*</i></span></label>
+        <label class="fm-check" style="margin-top:12px"><input type="checkbox" name="imagem" value="Sim"><span>Autorizo, de forma opcional, o uso da minha imagem e voz e o compartilhamento de publicações das minhas redes sociais pela União Chefs Empreendedores. Posso revogar quando quiser.</span></label>
       </div>
       <div class="fm-hp" aria-hidden="true"><label>Não preencha<input type="text" name="site" tabindex="-1" autocomplete="off"></label></div>
       <div class="fm-foot">
@@ -1799,9 +1801,9 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
 <script src="vendor/gsap-3.12.5.min.js"></script>
 <script src="vendor/ScrollTrigger-3.12.5.min.js"></script>
 <script src="assets/app.js?v=22"></script>
-<script src="assets/form-popup.js?v=2"></script>
+<script src="assets/form-popup.js?v=3"></script>
 <script src="assets/diretoria.js?v=11"></script>
-<script src="assets/analytics.js?v=3"></script>
+<script src="assets/analytics.js?v=4"></script>
 <script src="assets/perf.js?v=1" defer></script>
 </body>
 </html>

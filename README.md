@@ -22,7 +22,7 @@ Abra `assets/app.js`: o bloco `AGENDA` está no começo da seção "agenda". Edi
 1. O domínio `uniaochefsempreendedores.com.br` já está nas páginas, no `robots.txt`, no `sitemap.xml` e no `security.txt`. Conecte esse domínio na Vercel (sem `www` como principal).
 2. Confira no GTM (GTM-MLJ7H56F) a tag do GA4 e os acionadores dos eventos (veja `SEGURANCA.md`, item 6). O `analytics.js` lê o ID da meta `gtm-id` do `index.html`.
 3. Crie `LOG_SALT` na Vercel (veja `SEGURANCA.md`).
-4. A CSP agora fica só no `vercel.json`; não existe mais `<meta>` de CSP nas páginas. Ela precisa liberar `https://www.googletagmanager.com` e `https://*.google-analytics.com` (script-src, img-src, connect-src).
+5. Se criar no Google Forms a pergunta "Autoriza uso de imagem e voz? (Sim/Não)", inclua o número `entry.` dela em `assets/form-popup.js`. Até lá, a resposta vai na 1ª linha da carta.
 5. No Google Forms, crie a pergunta "Autoriza uso de imagem e voz? (Sim/Não)" e cole o número `entry.` dela em `ENTRY_IMAGEM` no `api/inscricao.js`. Até lá, a resposta vai na 1ª linha da carta.
 
 ## Segurança: o que foi aplicado
@@ -30,7 +30,7 @@ Abra `assets/app.js`: o bloco `AGENDA` está no começo da seção "agenda". Edi
 |---|---|
 | HTTPS | HSTS de 2 anos, `upgrade-insecure-requests`, nenhuma chamada `http://`; `.htaccess` redireciona no Apache |
 | Rate limit | `/api/log`: 20 requisições/min por IP, depois 429. É por instância; para limite global use uma regra de Rate Limiting no Vercel Firewall |
-| Validação de inputs | Ficha de inscrição validada no navegador e de novo no servidor (`api/inscricao.js`: e-mail, data, maior de 18 anos, aceite obrigatório, tamanhos máximos, 6 envios/10 min por IP). Agenda (datas AAAA-MM-DD, início ≤ fim, tamanhos máximos, arte só da lista) e a API (POST, mesma origem, tipo de conteúdo, máx. 4 KB, JSON, só campos permitidos) |
+| Validação de inputs | Ficha de inscrição validada no navegador (e-mail, data, maior de 18 anos, aceite obrigatório, tamanhos máximos); o envio final é feito pela pessoa no Google Forms. Agenda (datas AAAA-MM-DD, início ≤ fim, tamanhos máximos, arte só da lista) e a API (POST, mesma origem, tipo de conteúdo, máx. 4 KB, JSON, só campos permitidos) |
 | Sanitização | Textos da agenda passam por escape de HTML; demais textos usam `textContent`; CSP bloqueia script injetado; links externos com `noopener noreferrer` |
 | Controle de acesso | Site público, sem login. Anti-clickjacking (`frame-ancestors 'none'`), `Cross-Origin-*` same-origin, câmera/microfone/localização desligados, API só POST. Ative 2FA no GitHub e na Vercel |
 | Expiração de sessão | Não há login nem cookies. Armazenamento no aparelho: `sessionStorage` (pop-up da agenda, some ao fechar a aba) e `localStorage` com a chave `ld_privacidade` (só lembra que o aviso de privacidade foi visto) |

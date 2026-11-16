@@ -1,0 +1,16 @@
+# segredos e variáveis locais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# dependências e builds
+node_modules/
+.vercel/
+
+# lixo do sistema e rascunhos
+.DS_Store
+Thumbs.db
+*.bak
+*.zip

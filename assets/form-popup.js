@@ -67,6 +67,7 @@
   function open(trigger) {
     lastTrigger = trigger || null;
     msg.textContent = '';
+    if (btnSend) btnSend.removeAttribute('aria-busy');
     dlg.classList.remove('is-done');
     dlg.showModal();
     root.classList.add('fm-lock');
@@ -114,6 +115,7 @@
     // A pessoa preenche aqui e o Google Forms abre já preenchido: ela só confere e toca em "Enviar".
     var url = linkPreenchido(data);
     var link = document.getElementById('fmAbrirGoogle'); if (link) link.href = url;
+    if (btnSend) btnSend.setAttribute('aria-busy', 'true');
     var aba = window.open(url, '_blank');
     if (aba) { try { aba.opener = null; } catch (er) {} }
     dlg.classList.add('is-done');

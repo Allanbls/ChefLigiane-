@@ -8,7 +8,7 @@ if(hasG && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 const $=id=>document.getElementById(id);
 
 /* ---------- cartões-postais das cidades (ilustrações) ---------- */
-const sky=(id,a,b)=>`<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="320" height="200" fill="url(#${id})"/>`;
+const sky=(id,a,b)=>`<rect width="320" height="200" fill="${a}"/>`;
 const sun=(x,y,r,c='#FFF3C4')=>`<circle cx="${x}" cy="${y}" r="${r+10}" fill="${c}" opacity=".35"/><circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`;
 const waves=(y,c='#fff')=>`<path d="M0 ${y} q20 -6 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="${c}" stroke-width="2.5" opacity=".55"/>`;
 const palm=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 0 C-4 -30 -2 -60 10 -86" fill="none" stroke="#8A5A3A" stroke-width="7" stroke-linecap="round"/><g fill="#2F9E4F"><ellipse cx="-8" cy="-88" rx="26" ry="7" transform="rotate(-25 -8 -88)"/><ellipse cx="28" cy="-88" rx="26" ry="7" transform="rotate(25 28 -88)"/><ellipse cx="10" cy="-98" rx="22" ry="6" transform="rotate(-80 10 -98)"/><ellipse cx="-2" cy="-78" rx="22" ry="6" transform="rotate(-55 -2 -78)"/><ellipse cx="24" cy="-78" rx="22" ry="6" transform="rotate(50 24 -78)"/></g></g>`;
@@ -178,48 +178,22 @@ function onScroll(){const h=document.scrollingElement||document.documentElement;
 addEventListener('scroll',onScroll,{passive:true});onScroll();
 });
 
-safe("granulado",function(){
-/* ---------- granulado no hero ---------- */
-const cv=$('sprinkles'),ctx=cv.getContext('2d');
-const cols=['#D12E5E','#FFB81C','#19B5B0','#FF9A3D','#2F9E4F','#0B7471'];
-let W=0,H=0,parts=[],mouse={x:-999,y:-999};
-function size(){const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);parts=Array.from({length:Math.round(Math.min(80,W/16))},()=>mk(true));}
-function mk(any){return{x:Math.random()*W,y:any?Math.random()*H:-20,l:8+Math.random()*10,a:Math.random()*Math.PI,va:(Math.random()-.5)*.03,vy:.3+Math.random()*.55,vx:(Math.random()-.5)*.2,c:cols[Math.random()*cols.length|0],o:.55+Math.random()*.4}}
-function draw(){ctx.clearRect(0,0,W,H);ctx.lineCap='round';
-  for(const p of parts){
-    if(!reduce){const dx=p.x-mouse.x,dy=p.y-mouse.y,d2=dx*dx+dy*dy;if(d2<12000){const f=(12000-d2)/12000*1.8,dd=Math.sqrt(d2+1);p.x+=dx/dd*f;p.y+=dy/dd*f;}
-      p.y+=p.vy;p.x+=p.vx;p.a+=p.va;if(p.y>H+20)Object.assign(p,mk(false));}
-    ctx.globalAlpha=p.o;ctx.strokeStyle=p.c;ctx.lineWidth=4.5;ctx.beginPath();
-    ctx.moveTo(p.x-Math.cos(p.a)*p.l/2,p.y-Math.sin(p.a)*p.l/2);ctx.lineTo(p.x+Math.cos(p.a)*p.l/2,p.y+Math.sin(p.a)*p.l/2);ctx.stroke();}
-  if(!reduce)requestAnimationFrame(draw);}
-size();draw();addEventListener('resize',size);
-const hero=document.querySelector('.hero');
-hero.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;});
-hero.addEventListener('pointerleave',()=>{mouse.x=mouse.y=-999});
-const hv=$('heroVisual');
+safe("hero-parallax",function(){
+/* ---------- hero: leve paralaxe do mouse (sem confete) ---------- */
+const hero=document.querySelector('.hero'),hv=$('heroVisual');
+if(!hero||!hv)return;
 if(!reduce&&hasG&&matchMedia('(pointer:fine)').matches){
   hero.addEventListener('pointermove',e=>{const cx=e.clientX/innerWidth-.5,cy=e.clientY/innerHeight-.5;
     hv.querySelectorAll('[data-depth]').forEach(el=>{const d=+el.dataset.depth;gsap.to(el,{x:cx*30*d,y:cy*24*d,duration:.9,ease:'power3.out'});});});}
-});
-
-safe("letreiro",function(){
-/* ---------- letreiro ---------- */
-const mq=$('marquee');mq.innerHTML+=mq.innerHTML;
-let mx=0,vel=0,last=scrollY;
-function loop(){const s=scrollY;vel+=((s-last)*.25-vel)*.1;last=s;mx-=(.7+Math.abs(vel)*.6)*(vel<-0.5?-1:1);
-  const w=mq.scrollWidth/2;if(mx<-w)mx+=w;if(mx>0)mx-=w;mq.style.transform='translateX('+mx+'px)';requestAnimationFrame(loop);}
-if(!reduce)loop();
 });
 
 safe("entradas",function(){
 /* ---------- entradas ---------- */
 if(hasG&&!reduce){
   gsap.from('.hero h1 .line > span',{yPercent:105,duration:1.1,ease:'expo.out',stagger:.12,delay:.1});
-  gsap.from('.hero .tag, .hero-lead, .roles, .hero-ctas',{y:24,opacity:0,duration:.9,ease:'expo.out',stagger:.08,delay:.35});
+  gsap.from('.hero .tag, .hero-lead, .hero-ctas',{y:24,opacity:0,duration:.9,ease:'expo.out',stagger:.08,delay:.35});
   gsap.from('.hero-visual .arch',{clipPath:'inset(100% 0 0 0 round 999px 999px 28px 28px)',duration:1.3,ease:'power4.inOut',delay:.15});
-  gsap.from('.hero-visual .blob',{scale:.4,duration:1.4,ease:'expo.out',delay:.1});
   gsap.from('.hero-visual .mini, .hero-visual .followers',{scale:.5,rotate:-20,opacity:0,duration:1,ease:'back.out(1.7)',stagger:.15,delay:.8});
-  gsap.from('.hero-visual .seal',{scale:0,duration:.9,ease:'back.out(2)',delay:1});
   document.querySelectorAll('[data-count]').forEach(el=>{const t=+el.dataset.count,o={v:0};gsap.to(o,{v:t,duration:1.8,ease:'power2.out',delay:.6,onUpdate:()=>el.textContent=Math.round(o.v)});});
   if(window.ScrollTrigger){
     gsap.utils.toArray('.reveal').forEach(el=>gsap.from(el,{y:40,opacity:0,duration:.9,delay:parseFloat(el.dataset.d)||0,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}));
@@ -438,15 +412,6 @@ safe("leque",function(){
   stage.parentElement.classList.add('js-fan');
 });
 
-/* ---------- convite final: granulado flutuante ---------- */
-safe("granulado-convite",function(){
-  const box=document.querySelector('.join-spr');if(!box)return;
-  const cols=['#FFB81C','#19B5B0','#FF9A3D','#2F9E4F','#FFD873'];
-  for(let i=0;i<26;i++){const s=document.createElement('i');
-    const x=i%2?78+(i*7)%20:2+(i*11)%20,y=(i*37+9)%94;
-    s.style.cssText=`left:${x}%;top:${y}%;--c:${cols[i%cols.length]};--r:${(i*47)%180}deg;--d:${4+(i%5)}s;animation-delay:-${i%7}s`;
-    box.appendChild(s);}
-});
 })();
 
 /* ---------- monitoramento leve: erros do site viram uma linha no log do servidor (sem terceiros, sem dados pessoais) ---------- */

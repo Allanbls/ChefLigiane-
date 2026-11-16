@@ -359,7 +359,7 @@
     if (!G || hero.dataset.fx) return; hero.dataset.fx = 1;
     var tl = G.timeline({ defaults: { ease: "expo.out" }, delay: .25 });
     tl.fromTo(hero.querySelector(".drp-logo"), { y: -160, rotate: -20, autoAlpha: 0 }, { y: 0, rotate: 0, autoAlpha: 1, duration: 1, ease: "bounce.out" })
-      .fromTo(splitWords(hero.querySelector("h1"), true), { yPercent: 120, rotate: 18, autoAlpha: 0 }, { yPercent: 0, rotate: 0, autoAlpha: 1, duration: 1, stagger: .04 }, .15)
+      .fromTo(splitWords(hero.querySelector("h2"), true), { yPercent: 120, rotate: 18, autoAlpha: 0 }, { yPercent: 0, rotate: 0, autoAlpha: 1, duration: 1, stagger: .04 }, .15)
       .fromTo(splitWords(hero.querySelector(".script")), { y: 26, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .7, stagger: .06 }, .7)
       .fromTo(hero.querySelector(".drp-hint"), { y: -60, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .9, ease: "bounce.out" }, 1);
   }

@@ -1044,8 +1044,8 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
 .drp-hero,.drp-scene,.drp-end{position:relative;z-index:1}
 .drp-hero{min-height:calc(100svh - var(--toph));display:grid;place-content:center;justify-items:center;text-align:center;padding:40px 22px 150px}
 .drp-logo{width:clamp(110px,22vw,170px);height:auto;margin-bottom:18px}
-.drp-hero h1{font-size:clamp(3.2rem,13vw,9rem);line-height:.9;margin:0}
-.drp-hero h1 em{font-style:normal;color:var(--pitanga)}
+.drp-hero h2{font-size:clamp(3.2rem,13vw,9rem);line-height:.9;margin:0}
+.drp-hero h2 em{font-style:normal;color:var(--pitanga)}
 .drp-hero .script{display:block;font-size:clamp(1.6rem,3.4vw,2.6rem);color:var(--mar);margin-top:16px;transform:rotate(-2deg)}
 .drp-hint{margin:30px 0 0;font-weight:800;font-size:.76rem;letter-spacing:.22em;text-transform:uppercase}
 .drp-hint::after{content:"";display:block;width:3px;height:52px;margin:14px auto 0;background:var(--pitanga);animation:drp-drip 1.6s var(--ease) infinite;transform-origin:top}
@@ -1110,7 +1110,7 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
 .drp-quote{margin:18px 0 0;max-width:30ch;font:700 clamp(1.15rem,1.7vw,1.45rem)/1.35 var(--f-body);color:var(--cacau-2)}
 .drp-step{min-height:40vh;display:flex;align-items:center}
 .drp-b{margin:0;max-width:44ch;font-size:clamp(1.06rem,1.35vw,1.2rem);line-height:1.7;color:var(--cacau)}
-.drp-hero h1 .drp-ch{display:inline}
+.drp-hero h2 .drp-ch{display:inline}
 .drp .hl{color:var(--pitanga);position:relative}
 .drp .hl::after{content:"";position:absolute;left:0;right:0;bottom:.02em;height:.18em;background:color-mix(in srgb,var(--sol) 70%,transparent);border-radius:6px;transform:scaleX(0);transform-origin:0;transition:transform .9s var(--ease) .5s;z-index:-1}
 .in .hl::after{transform:none}
@@ -1301,11 +1301,11 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
 /* palavras e letras quebradas para animar */
 .drp .w{display:inline-block}
 .drp .ch{display:inline-block;will-change:transform}
-.drp-nm .w,.drp-hero h1 .w,.drp-end h2 .w{overflow:hidden;padding:.1em .03em .14em;margin:-.1em -.03em -.14em;vertical-align:top}
+.drp-nm .w,.drp-hero h2 .w,.drp-end h2 .w{overflow:hidden;padding:.1em .03em .14em;margin:-.1em -.03em -.14em;vertical-align:top}
 /* texto escondido até o efeito rodar (só quando o GSAP está ativo) */
 .drp.fx .drp-scene:not([data-head-done]) .drp-head,
 .drp.fx .drp-step:not(.seen) .drp-b,
-.drp.fx .drp-hero:not([data-fx]) > .drp-logo,.drp.fx .drp-hero:not([data-fx]) > h1,.drp.fx .drp-hero:not([data-fx]) > .script,.drp.fx .drp-hero:not([data-fx]) > .drp-hint,
+.drp.fx .drp-hero:not([data-fx]) > .drp-logo,.drp.fx .drp-hero:not([data-fx]) > h2,.drp.fx .drp-hero:not([data-fx]) > .script,.drp.fx .drp-hero:not([data-fx]) > .drp-hint,
 .drp.fx .drp-end:not([data-fx]) > h2,.drp.fx .drp-end:not([data-fx]) .btn{visibility:hidden}
 /* novo estilo de letra: frase manuscrita, primeiro parágrafo em destaque, resto mais leve */
 .drp-quote{font:700 clamp(1.7rem,2.6vw,2.2rem)/1.08 var(--f-script);color:var(--cacau);max-width:22ch;transform:rotate(-1.5deg);transform-origin:left}
@@ -2205,7 +2205,7 @@ html.menu-open .nav{z-index:80}
   <header class="drp-hero" id="drpHero">
     <div class="drp-bg" aria-hidden="true"></div>
     <span class="drp-logo"><img src="imagens/logo_uc.png" alt="União Chefs Empreendedores" width="535" height="155" data-logo loading="lazy" decoding="async"></span>
-    <h1 id="drpTitle">Conheça a <em class="hl">diretoria</em></h1>
+    <h2 id="drpTitle">Conheça a <em class="hl">diretoria</em></h2>
     <span class="script">nove chefs, uma só união</span>
     <p class="drp-hint">Role para conhecer</p>
     <div class="drp-mq" aria-hidden="true"><div><span>União Chefs Empreendedores<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Valorização<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Apoio<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Oportunidades<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Brasil e exterior<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>União Chefs Empreendedores<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Valorização<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Apoio<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Oportunidades<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Brasil e exterior<svg aria-hidden="true"><use href="#dr-star"/></svg></span></div></div>

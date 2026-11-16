@@ -1286,7 +1286,7 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
 .drp-stage{position:sticky;top:var(--toph);z-index:3;height:calc(100svh - var(--toph));pointer-events:none}
 .drp-stage-in{position:absolute;inset:0}
 .drp-stage .drp-fig{position:absolute;inset:0;height:auto;top:0;display:grid;place-items:center;visibility:hidden;pointer-events:auto}
-.drp-stage .drp-fig.on{visibility:visible}
+.drp-stage .drp-fig.on{visibility:inherit}
 .drp-stage .drp-arch{clip-path:none;transition:none}
 .drp-stage .drp-arch img{transition:none;will-change:transform}
 .drp-stage .drp-blob{transform:rotate(6deg);transition:none}
@@ -1332,7 +1332,7 @@ html.dr-lock body{padding-right:var(--dr-sbw,0px)}
   .drp-step[data-step="0"] .drp-b{font-size:1.32rem}
   .drp-b{font-size:1.04rem}
 }
-@media (prefers-reduced-motion:reduce){.drp-stage .drp-fig.on{visibility:visible;opacity:1}}
+@media (prefers-reduced-motion:reduce){.drp-stage .drp-fig.on{visibility:inherit;opacity:1}}
 
 /* ===== v22: fileira da diretoria — leve e suave ===== */
 .dr-track.dr-wait .dr-card{visibility:hidden}
@@ -1801,6 +1801,26 @@ html.menu-open .nav{z-index:80}
 @keyframes solGira{to{transform:rotate(360deg)}}
 @keyframes solBrilha{0%,100%{filter:brightness(1) saturate(1)}50%{filter:brightness(1.12) saturate(1.1)}}
 @media (prefers-reduced-motion:reduce){#agendaPop .pop-sun{animation:none}}
+
+/* ===== v25: ajustes mobile (celular primeiro): aviso compacto, textos legíveis, áreas de toque ===== */
+@media (max-width:699px){
+  .ck{padding:12px 14px;gap:8px 12px;border-radius:18px;grid-template-columns:1fr}
+  .ck-ic{display:none}
+  .ck-tx b{font-size:1.02rem;margin-bottom:3px}
+  .ck-tx p{font-size:.8rem;line-height:1.4}
+  .ck-acts{gap:8px}
+  .ck-btn{padding:11px 14px;min-height:44px}
+  .wa{width:54px;height:54px}
+}
+@media (max-width:600px){
+  .card .dt small,.card .uf,.card .state{font-size:.72rem}
+}
+@media (pointer:coarse){
+  .dots button{position:relative}
+  .dots button::after{content:"";position:absolute;inset:-18px -4px}
+  .pc-go{padding-block:12px;margin-top:6px}
+  .foot-legal a,.foot-legal button{display:inline-flex;align-items:center;min-height:44px}
+}
 </style>
 
 </head>

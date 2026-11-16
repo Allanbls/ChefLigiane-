@@ -294,7 +294,7 @@
   function showFig(i, instant) {
     if (!figEls.length || i === shown) return;
     var prev = shown; shown = i;
-    if (!G) { figEls.forEach(function (f, k) { f.classList.toggle("on", k === i); f.style.visibility = k === i ? "visible" : "hidden"; f.style.opacity = k === i ? 1 : 0; }); return; }
+    if (!G) { figEls.forEach(function (f, k) { f.classList.toggle("on", k === i); f.style.visibility = k === i ? "inherit" : "hidden"; f.style.opacity = k === i ? 1 : 0; }); return; }
     if (figTL) figTL.progress(1).kill();
     /* qualquer outra foto que ainda esteja na tela some na hora: nunca duas juntas */
     figEls.forEach(function (f, k) { if (k !== i && k !== prev) { G.set(f, { autoAlpha: 0 }); f.classList.remove("on"); } });

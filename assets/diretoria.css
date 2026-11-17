@@ -104,7 +104,7 @@
 #drx .txt h2{font:400 clamp(2.1rem,9.6vw,2.8rem)/1 var(--f-display);letter-spacing:-.015em;margin:10px 0 8px}
 #drx .q{font:700 1.55rem/1.08 var(--f-script);margin-bottom:8px;color:var(--cacau)}
 #drx .dx-hl{color:var(--pitanga)}
-#drx .b{font-size:.9rem;line-height:1.5;color:var(--cacau-2);margin-top:9px}
+#drx p.b{font-size:.9rem;line-height:1.5;color:var(--cacau-2);margin-top:9px}
 #drx .intro .dx-card{text-align:center;gap:6px}
 #drx .intro .i-logo{width:min(70vw,320px);height:auto;display:block;margin:0 auto 16px;opacity:0;transform:translateY(14px);transition:opacity .8s ease .1s,transform .9s var(--e) .1s}
 #drx .panel.dx-on .i-logo{opacity:1;transform:none}
@@ -169,8 +169,8 @@
 #drx .cta,#drx .back{height:46px}
 #drx .endbtns{margin-top:12px}
 #drx .pic,#drx .dx-lead .pic{--ph:clamp(130px,24svh,240px)}
-#drx .b{font-size:.8rem;line-height:1.42;margin-top:6px}
-#drx .b:nth-of-type(n+3){display:none}
+#drx p.b{font-size:.8rem;line-height:1.42;margin-top:6px}
+#drx p.b:nth-of-type(n+3){display:none}
 #drx .txt h2{font-size:clamp(1.7rem,8vw,2.3rem)}
 #drx .logo{width:min(64vw,320px)}
 }
@@ -183,7 +183,7 @@
 #drx .chef .txt{text-align:left}
 #drx .txt h2{font-size:clamp(3rem,5vw,4.8rem);margin:12px 0}
 #drx .q{font-size:2.1rem}
-#drx .b{font-size:1.05rem;max-width:34rem}
+#drx p.b{font-size:1.05rem;max-width:34rem}
 #drx .dx-hero .dx-card,#drx .end .dx-card{width:min(760px,92vw)}
 #drx .giant{left:62%}
 #drx .badge{left:0;margin-left:0;top:-44px;text-align:left}

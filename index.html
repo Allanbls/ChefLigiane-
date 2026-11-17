@@ -1796,6 +1796,8 @@ html.menu-open .nav{z-index:80}
 .uf-words{margin-bottom:56px}
 .motivos{margin-top:64px}
 .motivos .mot-head{margin-bottom:28px}
+/* título dos 6 motivos não acompanha mais o scroll no computador */
+@media (min-width:900px){.motivos .mot-head{position:static;top:auto;align-self:center}}
 /* sol da primeira modal brilha */
 #agendaPop .pop-sun{animation:solGira 60s linear infinite,solBrilha 3.4s ease-in-out infinite;transform-origin:62% 38%}
 @keyframes solGira{to{transform:rotate(360deg)}}
@@ -1823,7 +1825,7 @@ html.menu-open .nav{z-index:80}
 }
 </style>
 
-<link rel="stylesheet" href="assets/diretoria.css?v=1">
+<link rel="stylesheet" href="assets/diretoria.css?v=2">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2224,7 +2226,7 @@ html.menu-open .nav{z-index:80}
 <script src="assets/uniao-gsap.js?v=1"></script>
 <script src="assets/app.js?v=24"></script>
 <script src="assets/form-popup.js?v=3"></script>
-<script src="assets/diretoria.js?v=14"></script>
+<script src="assets/diretoria.js?v=15"></script>
 <script src="assets/analytics.js?v=4"></script>
 <script src="assets/perf.js?v=1" defer></script>
 <script src="assets/capa.js?v=1" defer></script>

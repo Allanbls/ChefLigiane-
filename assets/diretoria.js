@@ -232,9 +232,26 @@ document.getElementById('tp1').setAttribute('d',tp);document.getElementById('tp2
   document.getElementById('back').addEventListener('click',exitClick);
   document.getElementById('cta').addEventListener('click',function(e){e.preventDefault();afterClose=function(){var el=document.getElementById('associar');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});};exitClick(e);});
 
+  /* computador: arrastar com o mouse (igual ao deslizar do dedo) e teclado */
+  (function(){
+    var down=false,sy=0,st=0,moved=0;
+    box.addEventListener('pointerdown',function(e){
+      if(e.pointerType!=='mouse'||e.button!==0||(e.target.closest&&e.target.closest('button,a')))return;
+      down=true;sy=e.clientY;st=box.scrollTop;moved=0;
+    });
+    addEventListener('pointermove',function(e){
+      if(!down)return;var dy=e.clientY-sy;moved=Math.max(moved,Math.abs(dy));
+      if(moved>4){box.classList.add('drag');box.scrollTop=st-dy*1.6;}
+    });
+    function up(){down=false;box.classList.remove('drag');}
+    addEventListener('pointerup',up);addEventListener('pointercancel',up);
+    box.addEventListener('dragstart',function(e){e.preventDefault();});
+  })();
+  function step(n){if(view.hidden||busy)return;var max=scroller.offsetHeight,unit=max/(M-1),i=Math.round(box.scrollTop/unit)+n;
+    box.scrollTo({top:Math.max(0,Math.min(M-1,i))*unit,behavior:reduce?'auto':'smooth'});}
   host.addEventListener('click',function(e){var f=e.target.closest&&e.target.closest('.ef');if(f){var max=scroller.offsetHeight;box.scrollTo({top:(+f.dataset.i+1)/(M-1)*max,behavior:'smooth'});}});
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){kick();});
-  return {enter:enter,leave:leave,exit:function(){var r=document.getElementById('x').getBoundingClientRect();leave(r.left+r.width/2,r.top+r.height/2);},isBusy:function(){return busy;},force:function(){hideLayers();view.hidden=true;live=false;busy=false;unlock();}};
+  return {step:step,enter:enter,leave:leave,exit:function(){var r=document.getElementById('x').getBoundingClientRect();leave(r.left+r.width/2,r.top+r.height/2);},isBusy:function(){return busy;},force:function(){hideLayers();view.hidden=true;live=false;busy=false;unlock();}};
 
   }
   function mount() {
@@ -261,6 +278,10 @@ document.getElementById('tp1').setAttribute('d',tp);document.getElementById('tp2
     if (!root) return;
     var v = document.getElementById("drxView"); if (v.hidden) return;
     if (e.key === "Escape") { e.preventDefault(); if (!api.isBusy()) api.exit(); }
+    else if (e.key === "ArrowDown" || e.key === "ArrowRight" || e.key === "PageDown" || (e.key === " " && !e.shiftKey && document.activeElement.tagName !== "BUTTON")) { e.preventDefault(); api.step(1); }
+    else if (e.key === "ArrowUp" || e.key === "ArrowLeft" || e.key === "PageUp" || (e.key === " " && e.shiftKey)) { e.preventDefault(); api.step(-1); }
+    else if (e.key === "Home") { e.preventDefault(); api.step(-99); }
+    else if (e.key === "End") { e.preventDefault(); api.step(99); }
     else if (e.key === "Tab") {
       var f = [].filter.call(v.querySelectorAll("button,a[href]"), function (el) { return el.offsetParent !== null; });
       if (!f.length) return;

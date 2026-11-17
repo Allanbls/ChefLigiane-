@@ -145,7 +145,8 @@ document.getElementById('tp1').setAttribute('d',tp);document.getElementById('tp2
   var M=panels.length;
   var stage=document.getElementById('stage'),scroller=document.getElementById('scroller'),box=document.getElementById('drxBox'),view=document.getElementById('drxView'),
       cnt=document.getElementById('cnt'),rib=document.getElementById('rib'),ribBox=document.getElementById('ribBox');
-  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,live=false,busy=false,cur=0,run=0,washIdx=-1;
+  /* o efeito é a identidade da diretoria: não é desligado pelo "reduzir movimento" do sistema (no Windows ele costuma vir ativado sem o usuário saber) */
+  var reduce=false,live=false,busy=false,cur=0,run=0,washIdx=-1;
   rib.textContent=new Array(24).join('Valorização ✦ Apoio ✦ Oportunidades ✦ União Chefs ✦ ');
 
   function layout(){scroller.style.height=Math.round(box.clientHeight*(M-1)*1.12)+'px';}

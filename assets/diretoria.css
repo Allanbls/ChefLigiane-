@@ -188,9 +188,7 @@
 #drx .giant{left:62%}
 #drx .badge{left:0;margin-left:0;top:-44px;text-align:left}
 }
-@media (prefers-reduced-motion:reduce){#drx .faces.dx-in img,#drx .go::after,#drx .hint::after,#drx .logo .shim path{animation:none}
-#drx .faces img{opacity:1}
-}
+
 
 #drx{position:fixed;inset:0;z-index:9000;pointer-events:none;font-family:var(--f-body);line-height:1.2;color:var(--cacau)}
 #drx #drxView{position:absolute;inset:0;background:var(--canvas);pointer-events:auto;outline:0}

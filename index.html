@@ -1823,6 +1823,7 @@ html.menu-open .nav{z-index:80}
 }
 </style>
 
+<link rel="stylesheet" href="assets/diretoria.css?v=1">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2215,36 +2216,7 @@ html.menu-open .nav{z-index:80}
   </div>
 </dialog>
 
-<!-- Diretoria União Chefs Empreendedores: pop-up em tela cheia (cenas montadas por assets/diretoria.js) -->
-<div class="drp" id="drPop" role="dialog" aria-modal="true" aria-labelledby="drpTitle" tabindex="-1">
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-    <symbol id="dr-star" viewBox="0 0 24 24"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5z" fill="currentColor"/></symbol>
-  </defs></svg>
-  <div class="drp-kit" aria-hidden="true"><div class="drp-wash"></div><div class="drp-wash"></div><div class="drp-motifs"></div></div>
-  <div class="drp-top">
-    <p class="drp-where"><img src="imagens/logo_uc.png" alt="" data-logo loading="lazy" decoding="async"><b>Diretoria</b><span id="drpCount">9 chefs</span></p>
-    <button class="drp-x" type="button" data-dr-close aria-label="Fechar a diretoria"><span>Fechar</span><svg aria-hidden="true"><use href="#i-close"/></svg></button>
-    <i class="drp-bar" id="drpBar" aria-hidden="true"></i>
-  </div>
-  <nav class="drp-dots" id="drpDots" aria-label="Diretores"></nav>
-  <header class="drp-hero" id="drpHero">
-    <div class="drp-bg" aria-hidden="true"></div>
-    <span class="drp-logo"><img src="imagens/logo_uc.png" alt="União Chefs Empreendedores" width="535" height="155" data-logo loading="lazy" decoding="async"></span>
-    <h2 id="drpTitle">Conheça a <em class="hl">diretoria</em></h2>
-    <span class="script">nove chefs, uma só união</span>
-    <p class="drp-hint">Role para conhecer</p>
-    <div class="drp-mq" aria-hidden="true"><div><span>União Chefs Empreendedores<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Valorização<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Apoio<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Oportunidades<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Brasil e exterior<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>União Chefs Empreendedores<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Valorização<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Apoio<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Oportunidades<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Brasil e exterior<svg aria-hidden="true"><use href="#dr-star"/></svg></span></div></div>
-  </header>
-  <div class="drp-list" id="drpList"></div>
-  <footer class="drp-end" id="drpEnd">
-    <h2>Faça parte da <span class="hl">União Chefs</span></h2>
-    <div class="btns">
-      <button class="btn btn-solid" type="button" data-dr-close data-dr-goto="associar">Quero fazer parte<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-      <button class="btn" type="button" data-dr-close>Voltar ao site<svg class="ic" aria-hidden="true"><use href="#i-up"/></svg></button>
-    </div>
-    <div class="drp-mq" aria-hidden="true"><div><span>Valorização<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Apoio<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Oportunidades<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>União Chefs Empreendedores<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Valorização<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Apoio<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>Oportunidades<svg aria-hidden="true"><use href="#dr-star"/></svg></span><span>União Chefs Empreendedores<svg aria-hidden="true"><use href="#dr-star"/></svg></span></div></div>
-  </footer>
-</div>
+<!-- Diretoria: o pop-up em tela cheia é montado por assets/diretoria.js (estilo em assets/diretoria.css) ao clicar em [data-dr-open] -->
 
 <script src="vendor/gsap-3.12.5.min.js"></script>
 <script src="vendor/ScrollTrigger-3.12.5.min.js"></script>
@@ -2252,7 +2224,7 @@ html.menu-open .nav{z-index:80}
 <script src="assets/uniao-gsap.js?v=1"></script>
 <script src="assets/app.js?v=24"></script>
 <script src="assets/form-popup.js?v=3"></script>
-<script src="assets/diretoria.js?v=13"></script>
+<script src="assets/diretoria.js?v=14"></script>
 <script src="assets/analytics.js?v=4"></script>
 <script src="assets/perf.js?v=1" defer></script>
 <script src="assets/capa.js?v=1" defer></script>
